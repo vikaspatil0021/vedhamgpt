@@ -1,0 +1,66 @@
+.h-container{
+    background-color: #000;
+    border-bottom: 1px solid #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px 20px ;
+}
+.h-position{
+    position: fixed;
+    top: 0; 
+    width: 100%;
+
+}
+
+.h-container > div{
+    display: flex;
+    align-items: center;
+}
+
+/* sidebar and brand */
+.h-sidebar-icon{
+    font-size: 20px;
+    margin-right: 20px;
+}
+.h-brand{
+    font-weight: bold;
+    font-size: 19px;
+}
+
+/* profile */
+.h-profile{
+    cursor: pointer;
+    border-radius: 8px;
+}
+.h-profile:hover{
+    background-color: #333;
+    
+}
+.h-profileName{
+    font-weight: bold;
+    padding: 0 10px;
+}
+.h-profileImg{
+    width: 25px;
+    border-radius: 50%;
+    margin: 10px;
+    margin-left: 0px;
+}
+
+@media (max-width:500px) {
+    .h-container{
+        padding: 8px 20px;
+    }
+    .h-profile:hover{
+        background-color: #000;
+    }
+    .h-profileName{
+        display: none;
+    }
+    .h-profileImg{
+        margin: 5px 0;
+        width: 30px;
+    }
+}
