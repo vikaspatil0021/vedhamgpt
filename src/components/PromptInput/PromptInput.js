@@ -6,7 +6,18 @@ const PromptInput = () => {
         <div className='pi-position'>
 
             <div className='pi-container'>
-                hi
+                <form>
+                    <div className='pi-input-width'>
+
+                        <div className='pi-input-group'>
+                            <div className='pi-camera-icon'>
+                                <i class="fa-solid fa-camera"></i>
+                            </div>
+                            <input type='text' className='pi-input' />
+
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     )

@@ -11,11 +11,9 @@ const Header = () => {
           <div className='h-sidebar-icon'>
             <i class="fa-solid fa-bars"></i>
           </div>
-          <a href='/'>
             <div>
               <span className='h-brand'>Vedham GPT</span>
             </div>
-          </a>
         </div>
 
         <div className='h-profile'>
