@@ -27,11 +27,11 @@
 
 .pi-input{
     all:unset;
-    padding:18px 20px 18px 60px;
+    padding:18px 55px 18px 57px;
     border-radius: 30px;
     background-color: #000;
     border: 1px solid #333;
-    letter-spacing: .5px;
+    letter-spacing: 1px;
     font-weight: 600;
     width: 100%;
     position: relative;
@@ -48,5 +48,25 @@
     background-color: #222;
     border-radius: 50%;
     left: 30px;
+    cursor: pointer;
+}
+/* microphone icon */
+.pi-microphone-icon{
+    padding: 10px 14px;
+    position: absolute;
+    right:59px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.pi-microphone-icon:hover{
+
+    background-color: #222;
+}
+
+/* prompt button */
+.pi-button{
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
     cursor: pointer;
 }

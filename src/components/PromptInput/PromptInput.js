@@ -14,7 +14,14 @@ const PromptInput = () => {
                                 <i class="fa-solid fa-camera"></i>
                             </div>
                             <input type='text' className='pi-input' />
-
+                            <div className='pi-microphone-icon'>
+                                <i class="fa-solid fa-microphone"></i>
+                            </div>
+                            <div className='pi-button'>
+                                <span class="material-symbols-outlined">
+                                    send
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </form>
