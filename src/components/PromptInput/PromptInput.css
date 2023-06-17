@@ -4,9 +4,8 @@
 }
 
 .pi-container{
-    color: #fff;
+    color: #cacaca;
 }
-
 
 
 /* input */
@@ -27,7 +26,7 @@
 
 .pi-input{
     all:unset;
-    padding:18px 55px 18px 57px;
+    padding:18px 50px 18px 57px;
     border-radius: 30px;
     background-color: #000;
     border: 1px solid #333;
