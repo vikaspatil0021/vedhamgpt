@@ -5,7 +5,7 @@ const PromptInput = () => {
     const [prompt, setPrompt] = useState('');
 
     // controlling the rows of textarea by scrollheight
-    const handleTextareaHeight = (e) => {
+    const handleTextareaHeight = () => {
         const piInput = document.querySelector('.pi-input');
         piInput.style.height = "auto";
         if (piInput.scrollHeight > 145) {
@@ -41,6 +41,7 @@ const PromptInput = () => {
 
         if(interim !== ''){
             setPrompt(interim);
+            handleTextareaHeight();
         }
     }
 
@@ -56,7 +57,7 @@ const PromptInput = () => {
                                 <i class="fa-solid fa-camera"></i>
                             </div>
                             <textarea rows='1' type='text' className='pi-input' placeholder='Enter details here...' value={prompt} onChange={(e) => {
-                                handleTextareaHeight(e);
+                                handleTextareaHeight();
                                 setPrompt(e.target.value);
                             }} required />
                             <div className='pi-microphone-icon' onClick={(e) => startListening(e)}>
