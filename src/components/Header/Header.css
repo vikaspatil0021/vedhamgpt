@@ -40,7 +40,7 @@
 /* profile */
 .h-profile{
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 30px;
 }
 .h-profile:hover{
     background-color: #222;
@@ -48,13 +48,12 @@
 }
 .h-profileName{
     font-weight: bold;
-    padding: 0 10px;
+    padding: 0 10px 0 0;
 }
 .h-profileImg{
     width: 25px;
     border-radius: 50%;
-    margin: 10px;
-    margin-left: 0px;
+    margin:7px 7px 7px 7px;
 }
 
 @media (max-width:500px) {

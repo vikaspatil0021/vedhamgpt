@@ -1,23 +1,48 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "./PromptInput.css";
 
 const PromptInput = () => {
+    const [prompt, setPrompt] = useState('');
 
     // controlling the rows of textarea by scrollheight
-    
-    const handleTextareaHeight = (e)=>{
+    const handleTextareaHeight = (e) => {
         const piInput = document.querySelector('.pi-input');
         piInput.style.height = "auto";
-        if(piInput.scrollHeight > 145){
+        if (piInput.scrollHeight > 145) {
 
             piInput.style.height = "110px";
-        }else{
+        } else {
             piInput.style.height = (piInput.scrollHeight - 35) + "px";
 
         }
 
     }
-    
+
+    // live speech to text prompt code 
+    const speechRecognition = window.webkitSpeechRecognition;
+    const recognition = new speechRecognition();
+
+    const startListening = () => {
+        recognition.continuous = false;
+        recognition.interimResults = true;
+
+        recognition.start();
+    }
+
+    recognition.onresult = (event) => {
+        var interim = '';
+
+        for (var i = event.resultIndex; i < event.results.length; ++i) {
+            if (!event.results[i].isFinal) {
+
+                interim += event.results[i][0].transcript;
+            }
+        }
+
+        if(interim !== ''){
+            setPrompt(interim);
+        }
+    }
 
     return (
         <div className='pi-position'>
@@ -30,14 +55,15 @@ const PromptInput = () => {
                             <div className='pi-camera-icon'>
                                 <i class="fa-solid fa-camera"></i>
                             </div>
-                            <textarea onChange={(e)=>handleTextareaHeight(e)} rows='1' type='text' className='pi-input' placeholder='Enter details here...' required />
-                            <div className='pi-microphone-icon'>
+                            <textarea rows='1' type='text' className='pi-input' placeholder='Enter details here...' value={prompt} onChange={(e) => {
+                                handleTextareaHeight(e);
+                                setPrompt(e.target.value);
+                            }} required />
+                            <div className='pi-microphone-icon' onClick={(e) => startListening(e)}>
                                 <i class="fa-solid fa-microphone"></i>
                             </div>
                             <button className='pi-button' role='button' type='submit'>
-                                <span class="material-symbols-outlined">
-                                    send
-                                </span>
+                                <span class="material-symbols-outlined">send</span>
                             </button>
                         </div>
                     </div>

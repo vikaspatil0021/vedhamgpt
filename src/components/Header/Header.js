@@ -17,11 +17,9 @@ const Header = () => {
         </div>
 
         <div className='h-profile'>
+            <img src={profile_} alt='profile' className='h-profileImg' />
           <div className='h-profileName'>
             Vikas Patil
-          </div>
-          <div>
-            <img src={profile_} alt='profile' className='h-profileImg' />
           </div>
         </div>
 
