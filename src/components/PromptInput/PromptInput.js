@@ -34,15 +34,14 @@ const PromptInput = () => {
 
         for (var i = event.resultIndex; i < event.results.length; ++i) {
             if (!event.results[i].isFinal) {
-
                 interim += event.results[i][0].transcript;
             }
         }
 
         if(interim !== ''){
             setPrompt(interim);
-            handleTextareaHeight();
         }
+        handleTextareaHeight();
     }
 
     return (
