@@ -12,7 +12,7 @@ const Header = () => {
             <i class="fa-solid fa-bars"></i>
           </div>
             <div>
-              <span className='h-brand'>Vedham GPT</span>
+              <span className='h-brand'>Vedham</span>
             </div>
         </div>
 

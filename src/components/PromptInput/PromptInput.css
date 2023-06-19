@@ -67,6 +67,16 @@
     background-color: #222;
 }
 
+/* microphone animated icon */
+.pi-microphone-ani-icon{
+    display: none;
+    position: absolute;
+    right:59px;
+    border-radius: 50%;
+    bottom: 8.8px;
+    padding:0 7px 3px 7px;
+
+}
 /* prompt button */
 .pi-button{
     all:unset;
@@ -75,3 +85,4 @@
     align-items: center;
     cursor: pointer;
 }
+
