@@ -34,8 +34,8 @@ const PromptInput = () => {
         input.placeholder = "Listening ...";
 
         // microphone icon switch
-    const mp_icon = document.querySelector('.pi-microphone-icon');
-    const mp_ani_icon = document.querySelector('.pi-microphone-ani-icon');
+        const mp_icon = document.querySelector('.pi-microphone-icon');
+        const mp_ani_icon = document.querySelector('.pi-microphone-ani-icon');
         mp_icon.style.display = 'none';
         mp_ani_icon.style.display = 'block';
     }
@@ -56,12 +56,14 @@ const PromptInput = () => {
     }
 
     recognition.onspeechend = () => {
+        recognition.stop();
+
         const input = document.querySelector('.pi-input');
         input.placeholder = "Enter details here ...";
 
         // microphone icon switch
-    const mp_icon = document.querySelector('.pi-microphone-icon');
-    const mp_ani_icon = document.querySelector('.pi-microphone-ani-icon');
+        const mp_icon = document.querySelector('.pi-microphone-icon');
+        const mp_ani_icon = document.querySelector('.pi-microphone-ani-icon');
         mp_icon.style.display = 'block';
         mp_ani_icon.style.display = 'none';
     }
@@ -89,7 +91,7 @@ const PromptInput = () => {
                                     src="https://cdn.lordicon.com/psseymno.json"
                                     trigger="loop"
                                     colors="primary:#4be1ec,secondary:#cb5eee"
-                                    style={{width:"28px",height:"28px"}}
+                                    style={{ width: "28px", height: "28px" }}
 
                                 />
                             </div>
