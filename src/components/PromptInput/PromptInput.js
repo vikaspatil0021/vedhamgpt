@@ -59,7 +59,7 @@ const PromptInput = () => {
         
         const input = document.querySelector('.pi-input');
         input.placeholder = "Enter details here ...";
-        alert('good')
+
         // microphone icon switch
         const mp_icon = document.querySelector('.pi-microphone-icon');
         const mp_ani_icon = document.querySelector('.pi-microphone-ani-icon');
