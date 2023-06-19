@@ -58,16 +58,20 @@ const PromptInput = () => {
     recognition.onspeechend = () => {
         recognition.stop();
 
+    }
+
+    recognition.end =  ()=>{
+
         const input = document.querySelector('.pi-input');
         input.placeholder = "Enter details here ...";
-
+        
         // microphone icon switch
         const mp_icon = document.querySelector('.pi-microphone-icon');
         const mp_ani_icon = document.querySelector('.pi-microphone-ani-icon');
         mp_icon.style.display = 'block';
         mp_ani_icon.style.display = 'none';
     }
-
+        
     return (
         <div className='pi-position'>
             <div className='pi-container'>
