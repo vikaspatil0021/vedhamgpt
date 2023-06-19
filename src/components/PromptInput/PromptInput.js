@@ -24,11 +24,6 @@ const PromptInput = () => {
     const speechRecognition = window.webkitSpeechRecognition;
     const recognition = new speechRecognition();
 
-    // microphone icon switch
-    const mp_icon = document.querySelector('.pi-microphone-icon');
-    const mp_ani_icon = document.querySelector('.pi-microphone-ani-icon');
-
-
     const startListening = () => {
         recognition.continuous = false;
         recognition.interimResults = true;
@@ -38,6 +33,9 @@ const PromptInput = () => {
         const input = document.querySelector('.pi-input');
         input.placeholder = "Listening ...";
 
+        // microphone icon switch
+    const mp_icon = document.querySelector('.pi-microphone-icon');
+    const mp_ani_icon = document.querySelector('.pi-microphone-ani-icon');
         mp_icon.style.display = 'none';
         mp_ani_icon.style.display = 'block';
     }
@@ -61,13 +59,15 @@ const PromptInput = () => {
         const input = document.querySelector('.pi-input');
         input.placeholder = "Enter details here ...";
 
+        // microphone icon switch
+    const mp_icon = document.querySelector('.pi-microphone-icon');
+    const mp_ani_icon = document.querySelector('.pi-microphone-ani-icon');
         mp_icon.style.display = 'block';
         mp_ani_icon.style.display = 'none';
     }
 
     return (
         <div className='pi-position'>
-
             <div className='pi-container'>
                 <form>
                     <div className='pi-input-width'>
