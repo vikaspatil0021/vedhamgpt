@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./PromptInput.css";
 
 import mp_loading from "./../../assets/loading1.gif"
@@ -8,7 +8,19 @@ import p from "./../../assets/profile_.jpg"
 const PromptInput = () => {
     const [prompt, setPrompt] = useState('');
     const [fileSelected, setFileSelected] = useState('')
+    console.log(fileSelected);
 
+    // displaying the image container
+    useEffect(() => {
+        const imgContainer = document.querySelector('.pi-image-container');
+        if (fileSelected === '' || fileSelected === undefined || fileSelected === null) {
+            imgContainer.style.display = "none";
+        } else {
+            setTimeout(() => {
+                imgContainer.style.display = "flex";
+            }, 50)
+        }
+    }, [fileSelected])
 
     // controlling the rows of textarea by scrollheight
     const handleTextareaHeight = () => {
@@ -74,24 +86,27 @@ const PromptInput = () => {
     return (
         <div className='pi-position'>
             <div className='pi-container'>
-                        <div className='pi-image-container'>
-                            <div className='pi-selected-image'>
-
-                            <img src={(!fileSelected) ? '' : URL.createObjectURL(fileSelected)}  alt='select_image'  />
-                            </div>
+                <div className='pi-image-container'>
+                    <div className='pi-selected-image'>
+                        <img src={(!fileSelected) ? '' : URL.createObjectURL(fileSelected)} alt='select_image' />
+                        <div className='pi-img-xmark' onClick={()=>{
+                            setFileSelected('')
+                        }}>
+                            <i class="fa-solid fa-xmark"></i>
                         </div>
+                    </div>
+                </div>
                 <form>
                     <div className='pi-input-width'>
 
                         <div className='pi-input-group'>
                             <div className='pi-camera-icon'>
                                 <i class="fa-solid fa-camera"></i>
-                                <input type='file' className='pi-file-input' accept="image/jpeg, image/png, image/jpg" onChange={(e)=>{
-                                setFileSelected(e.target.files[0]);
-                            }} />
+                                <input type='file' className='pi-file-input' accept="image/jpeg, image/png, image/jpg" onChange={(e) => {
+                                    setFileSelected(e.target.files[0]);
+                                }} />
                             </div>
-                            {/* <div className=''> */}
-                            {/* </div> */}
+
                             <textarea rows='1' type='text' className='pi-input' placeholder='Enter details here ...' value={prompt} onChange={(e) => {
                                 handleTextareaHeight();
                                 setPrompt(e.target.value);
