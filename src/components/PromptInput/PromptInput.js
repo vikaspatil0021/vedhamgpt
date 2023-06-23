@@ -7,6 +7,8 @@ import p from "./../../assets/profile_.jpg"
 
 const PromptInput = () => {
     const [prompt, setPrompt] = useState('');
+    const [fileSelected, setFileSelected] = useState('')
+
 
     // controlling the rows of textarea by scrollheight
     const handleTextareaHeight = () => {
@@ -75,7 +77,7 @@ const PromptInput = () => {
                         <div className='pi-image-container'>
                             <div className='pi-selected-image'>
 
-                            <img src={"https://i.pinimg.com/736x/20/dc/ad/20dcadf605b1374cd3d680541507f8d7.jpg"} alt='select_image' />
+                            <img src={(!fileSelected) ? '' : URL.createObjectURL(fileSelected)}  alt='select_image'  />
                             </div>
                         </div>
                 <form>
@@ -84,7 +86,9 @@ const PromptInput = () => {
                         <div className='pi-input-group'>
                             <div className='pi-camera-icon'>
                                 <i class="fa-solid fa-camera"></i>
-                                <input type='file' className='pi-file-input' />
+                                <input type='file' className='pi-file-input' accept="image/jpeg, image/png, image/jpg" onChange={(e)=>{
+                                setFileSelected(e.target.files[0]);
+                            }} />
                             </div>
                             {/* <div className=''> */}
                             {/* </div> */}
