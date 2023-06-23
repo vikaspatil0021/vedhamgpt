@@ -75,7 +75,7 @@ const PromptInput = () => {
                         <div className='pi-image-container'>
                             <div className='pi-selected-image'>
 
-                            <img src={"https://hips.hearstapps.com/hmg-prod/images/flamingo-instagram-pose-1560870604.jpg"} alt='select_image' />
+                            <img src={"https://i.pinimg.com/736x/20/dc/ad/20dcadf605b1374cd3d680541507f8d7.jpg"} alt='select_image' />
                             </div>
                         </div>
                 <form>
