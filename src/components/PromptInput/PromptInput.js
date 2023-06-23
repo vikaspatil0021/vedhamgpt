@@ -15,10 +15,14 @@ const PromptInput = () => {
         const imgContainer = document.querySelector('.pi-image-container');
         if (fileSelected === '' || fileSelected === undefined || fileSelected === null) {
             imgContainer.style.display = "none";
+            imgContainer.style.opacity = 0;
+
         } else {
             setTimeout(() => {
                 imgContainer.style.display = "flex";
-            }, 50)
+                imgContainer.style.opacity = 1;
+
+            }, 100)
         }
     }, [fileSelected])
 
