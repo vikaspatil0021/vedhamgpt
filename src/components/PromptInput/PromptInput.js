@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import "./PromptInput.css";
 
 import mp_loading from "./../../assets/loading1.gif"
+import p from "./../../assets/profile_.jpg"
+
 
 const PromptInput = () => {
     const [prompt, setPrompt] = useState('');
@@ -56,7 +58,7 @@ const PromptInput = () => {
     }
 
     recognition.onend = () => {
-        
+
         const input = document.querySelector('.pi-input');
         input.placeholder = "Enter details here ...";
 
@@ -70,13 +72,22 @@ const PromptInput = () => {
     return (
         <div className='pi-position'>
             <div className='pi-container'>
+                        <div className='pi-image-container'>
+                            <div className='pi-selected-image'>
+
+                            <img src={"https://hips.hearstapps.com/hmg-prod/images/flamingo-instagram-pose-1560870604.jpg"} alt='select_image' />
+                            </div>
+                        </div>
                 <form>
                     <div className='pi-input-width'>
 
                         <div className='pi-input-group'>
                             <div className='pi-camera-icon'>
                                 <i class="fa-solid fa-camera"></i>
+                                <input type='file' className='pi-file-input' />
                             </div>
+                            {/* <div className=''> */}
+                            {/* </div> */}
                             <textarea rows='1' type='text' className='pi-input' placeholder='Enter details here ...' value={prompt} onChange={(e) => {
                                 handleTextareaHeight();
                                 setPrompt(e.target.value);
@@ -91,7 +102,6 @@ const PromptInput = () => {
                                     trigger="loop"
                                     colors="primary:#4be1ec,secondary:#cb5eee"
                                     style={{ width: "28px", height: "28px" }}
-
                                 />
                             </div>
                             <button className='pi-button' role='button' type='submit'>
