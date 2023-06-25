@@ -77,9 +77,9 @@
 .pi-loader-text span{
     font-weight: bold;
     letter-spacing: 1px;
-    /* background: linear-gradient(45deg,#00d2ff , #3a7bd5 80%); */
+    background: linear-gradient(45deg,#00d2ff , #3a7bd5);
     /* background: linear-gradient(45deg,#f2709c , #ff9472); */
-        background: linear-gradient(45deg,#c21500 , #ff9472);
+        /* background: linear-gradient(45deg,#c21500 , #ff9472); */
 
 
 			-webkit-text-fill-color: transparent;
