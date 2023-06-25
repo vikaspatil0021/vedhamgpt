@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import "./PromptInput.css";
 
+import { IonSpinner } from '@ionic/react';
+
+import axios from "axios";
+
 import mp_loading from "./../../assets/loading1.gif"
 import p from "./../../assets/profile_.jpg"
 
@@ -15,13 +19,10 @@ const PromptInput = () => {
         const imgContainer = document.querySelector('.pi-image-container');
         if (fileSelected === '' || fileSelected === undefined || fileSelected === null) {
             imgContainer.style.display = "none";
-            imgContainer.style.opacity = 0;
 
         } else {
             setTimeout(() => {
                 imgContainer.style.display = "flex";
-                imgContainer.style.opacity = 1;
-
             }, 100)
         }
     }, [fileSelected])
@@ -87,20 +88,68 @@ const PromptInput = () => {
         mp_ani_icon.style.display = 'none';
     }
 
+    // upload image to cloudinary
+    const uploadImage = async () => {
+        const formData = new FormData();
+        formData.append("file", fileSelected);
+        formData.append("upload_preset", "kpuktd4f");
+        await axios.post("https://api.cloudinary.com/v1_1/dt55mivpf/image/upload", formData)
+            .then((res) => {
+                console.log(res.data.url);
+            }).catch((err) => {
+                console.log(err.message);
+            })
+
+    }
+
+    // <-----------------onSumbit Prompt Trigger----->
+    // submit loading animation function
+    const loadAni = ({ loading, text }) => {
+        const inputGroup = document.querySelector('.pi-input-group-disabled');
+        const inputBtn = document.querySelector('.pi-button-disabled');
+        const loaderText = document.querySelector('.pi-loader-text span');
+
+        if (loading) {
+            inputGroup.style.display = 'flex';
+            inputBtn.style.display = 'block';
+
+            setTimeout(() => {
+                inputGroup.style.opacity = 1;
+                loaderText.innerHTML = text;
+            }, 10);
+        } else {
+            inputGroup.style.opacity = 0;
+            setTimeout(() => {
+                inputGroup.style.display = 'none';
+                inputBtn.style.display = 'none';
+            }, 400);
+        }
+    }
+    const onSubmitPrompt = () => {
+        loadAni({ loading: true, text:"Uploading image" });
+        console.log("g");
+        setTimeout(() => {
+            loadAni({ loading: false });
+        }, 9000)
+    }
+
     return (
         <div className='pi-position'>
             <div className='pi-container'>
                 <div className='pi-image-container'>
                     <div className='pi-selected-image'>
                         <img src={(!fileSelected) ? '' : URL.createObjectURL(fileSelected)} alt='select_image' />
-                        <div className='pi-img-xmark' onClick={()=>{
+                        <div className='pi-img-xmark' onClick={() => {
                             setFileSelected('')
                         }}>
                             <i class="fa-solid fa-xmark"></i>
                         </div>
                     </div>
                 </div>
-                <form>
+                <form method='POST' onSubmit={(e) => {
+                    e.preventDefault();
+                    onSubmitPrompt()
+                }}>
                     <div className='pi-input-width'>
 
                         <div className='pi-input-group'>
@@ -127,9 +176,24 @@ const PromptInput = () => {
                                     style={{ width: "28px", height: "28px" }}
                                 />
                             </div>
-                            <button className='pi-button' role='button' type='submit'>
+
+                            <button className='pi-button' role='button' type='submit' readOnly>
                                 <span class="material-symbols-outlined">send</span>
                             </button>
+
+                            <div className='pi-button-disabled'></div>
+
+                            <div className='pi-input-group-disabled'>
+                                <div className='pi-loader'>
+                                    <IonSpinner name="lines-sharp-small" />
+                                </div>
+                                <div className='pi-loader-text'>
+                                    <span>
+                                        Loading ...
+                                    </span>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </form>

@@ -13,6 +13,7 @@
     width: 100vw;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .pi-input-group{
     max-width: 700px;
@@ -44,13 +45,54 @@
     display: none;
 }
 
+/* onSumit container loading screen css */
+.pi-input-group-disabled{
+    position: absolute;
+    z-index: 1055;
+    top: 0;
+    left: 20px;
+    border-radius: 30px;
+    width: calc(100% - 71px);
+    height: calc(100% - 2px);
+    background-color: #000;
+    border: 1px solid #666;
+    opacity: 0;
+    display: none;
+    transition: opacity .4s ease-in-out;
+}
+
+.pi-loader{
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 15px;
+}
+
+.pi-loader-text{
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+}
+
+.pi-loader-text span{
+    font-weight: bold;
+    letter-spacing: 1px;
+    background: linear-gradient(45deg,#00d2ff , #3a7bd5 80%);
+    /* background: linear-gradient(45deg,#f2709c , #ff9472); */
+        /* background: linear-gradient(#c21500 , #ff9472); */
+
+
+			-webkit-text-fill-color: transparent;
+			-webkit-background-clip: text;
+}
+
+
 /* image container */
 .pi-image-container{
     width: 100vw;
     display: none;
     justify-content: center;
-    opacity: 0;
-    transition: display 1s ease-in-out , opacity 1s ease-in-out;
+    transition: display 1s ease-in-out;
 }
 
 .pi-selected-image{
@@ -142,5 +184,17 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    position: relative;
 }
 
+/* prompt button disable */
+.pi-button-disabled{
+    position: absolute;
+    z-index: 1055;
+    right: 20px;
+    width: 29px;
+    height: 30px;
+    background-color: #111;
+    opacity: .4;
+    display: none;
+}
