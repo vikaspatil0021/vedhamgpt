@@ -9,7 +9,7 @@ import mp_loading from "./../../assets/loading1.gif"
 import p from "./../../assets/profile_.jpg"
 
 
-const PromptInput = () => {
+const PromptInput = (props) => {
     const [prompt, setPrompt] = useState('');
     const [fileSelected, setFileSelected] = useState('')
     console.log(fileSelected);
@@ -125,15 +125,33 @@ const PromptInput = () => {
             }, 400);
         }
     }
+
     const onSubmitPrompt = () => {
-        loadAni({ loading: true, text:"Uploading image" });
-        console.log("g");
-        setTimeout(() => {
-            setPrompt('');
-            const piInput = document.querySelector('.pi-input');
-            piInput.style.height = "auto";
-                        loadAni({ loading: false });
-        }, 9000)
+        if (fileSelected === '' || fileSelected === undefined || fileSelected === null) {
+            props.setAlertMsg("No image selected.")
+            const abContainer = document.querySelector('.ab-container');
+            abContainer.style.display = "flex";
+            setTimeout(() => {
+
+                abContainer.style.opacity = 1
+            }, 10);
+            setTimeout(() => {
+                abContainer.style.opacity = 0
+                setTimeout(() => {
+
+                    abContainer.style.display = "none";
+                }, 400);
+
+            }, 4000);
+        }
+        // loadAni({ loading: true, text: "Uploading image" });
+        // console.log("g");
+        // setTimeout(() => {
+        //     setPrompt('');
+        //     const piInput = document.querySelector('.pi-input');
+        //     piInput.style.height = "auto";
+        //     loadAni({ loading: false });
+        // }, 9000);
     }
 
     return (

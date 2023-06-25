@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../Header/Header';
 import PromptInput from '../PromptInput/PromptInput';
+import AlertBox from '../AlertBox/AlertBox';
 
 const Home = () => {
+    const [alertMsg,setAlertMsg] = useState('This is a Alert message');
+
     return (
         <div>
             <div>
@@ -17,8 +20,9 @@ const Home = () => {
                 </div>
             </div>
             <div>
-                <PromptInput />
+                <PromptInput setAlertMsg={setAlertMsg} />
             </div>
+            <AlertBox alertMsg={alertMsg} />
         </div>
     )
 }
