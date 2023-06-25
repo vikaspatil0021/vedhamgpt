@@ -129,7 +129,10 @@ const PromptInput = () => {
         loadAni({ loading: true, text:"Uploading image" });
         console.log("g");
         setTimeout(() => {
-            loadAni({ loading: false });
+            setPrompt('');
+            const piInput = document.querySelector('.pi-input');
+            piInput.style.height = "auto";
+                        loadAni({ loading: false });
         }, 9000)
     }
 

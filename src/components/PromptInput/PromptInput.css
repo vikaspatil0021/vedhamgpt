@@ -1,21 +1,22 @@
-.pi-position{
+.pi-position {
     position: fixed;
     bottom: 30px;
 }
 
-.pi-container{
+.pi-container {
     color: #cacaca;
 }
 
 
 /* input */
-.pi-input-width{
+.pi-input-width {
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.pi-input-group{
+
+.pi-input-group {
     max-width: 700px;
     width: 100%;
     display: flex;
@@ -25,9 +26,9 @@
     position: relative;
 }
 
-.pi-input{
-    all:unset;
-    padding:18px 50px 18px 57px;
+.pi-input {
+    all: unset;
+    padding: 18px 50px 18px 57px;
     border-radius: 30px;
     background-color: #000;
     border: 1px solid #333;
@@ -37,16 +38,18 @@
     position: relative;
     overflow-wrap: break-word;
 }
-.pi-input:focus{
+
+.pi-input:focus {
     border: 1px solid #888;
 
 }
-.pi-input::-webkit-scrollbar{
+
+.pi-input::-webkit-scrollbar {
     display: none;
 }
 
 /* onSumit container loading screen css */
-.pi-input-group-disabled{
+.pi-input-group-disabled {
     position: absolute;
     z-index: 1055;
     top: 0;
@@ -61,51 +64,47 @@
     transition: opacity .4s ease-in-out;
 }
 
-.pi-loader{
+.pi-loader {
     display: inline-flex;
     align-items: center;
     height: 100%;
     padding: 0 15px;
 }
 
-.pi-loader-text{
+.pi-loader-text {
     display: inline-flex;
     align-items: center;
     height: 100%;
 }
 
-.pi-loader-text span{
+.pi-loader-text span {
     font-weight: bold;
     letter-spacing: 1px;
-    background: linear-gradient(45deg,#00d2ff , #3a7bd5);
-    /* background: linear-gradient(45deg,#f2709c , #ff9472); */
-        /* background: linear-gradient(45deg,#c21500 , #ff9472); */
-
-
-			-webkit-text-fill-color: transparent;
-			-webkit-background-clip: text;
+    background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
 
 /* image container */
-.pi-image-container{
+.pi-image-container {
     width: 100vw;
     display: none;
     justify-content: center;
     transition: display 1s ease-in-out;
 }
 
-.pi-selected-image{
+.pi-selected-image {
     background-color: #000;
     border-radius: 8px;
     padding: 15px;
-    margin: 20px ;
+    margin: 20px;
     border: 1px solid #888;
     position: relative;
 
 }
 
-.pi-selected-image img{
+.pi-selected-image img {
     border-radius: 8px;
 
     max-height: 200px;
@@ -113,7 +112,7 @@
     width: 100%;
 }
 
-.pi-img-xmark{
+.pi-img-xmark {
     padding: 2px 5px;
     cursor: pointer;
     border: 2px solid #888;
@@ -125,12 +124,12 @@
     background-color: #000;
 }
 
-.pi-img-xmark:hover{
+.pi-img-xmark:hover {
     color: rgb(238, 55, 55);
 }
 
 /* camera icon */
-.pi-camera-icon{
+.pi-camera-icon {
     padding: 10px 12px;
     position: absolute;
     z-index: 1;
@@ -142,7 +141,7 @@
     overflow: hidden;
 }
 
-.pi-file-input{
+.pi-file-input {
     position: absolute;
     left: 0;
     bottom: 0px;
@@ -155,31 +154,33 @@
 
 
 /* microphone icon */
-.pi-microphone-icon{
+.pi-microphone-icon {
     padding: 10px 14px;
     position: absolute;
-    right:59px;
+    right: 59px;
     bottom: 8.8px;
     cursor: pointer;
     border-radius: 50%;
 }
-.pi-microphone-icon:hover{
+
+.pi-microphone-icon:hover {
     background-color: #222;
 }
 
 /* microphone animated icon */
-.pi-microphone-ani-icon{
+.pi-microphone-ani-icon {
     display: none;
     position: absolute;
-    right:59px;
+    right: 59px;
     border-radius: 50%;
     bottom: 8.8px;
-    padding:0 7px 3px 7px;
+    padding: 0 7px 3px 7px;
 
 }
+
 /* prompt button */
-.pi-button{
-    all:unset;
+.pi-button {
+    all: unset;
     padding-left: 5px;
     display: flex;
     align-items: center;
@@ -188,7 +189,7 @@
 }
 
 /* prompt button disable */
-.pi-button-disabled{
+.pi-button-disabled {
     position: absolute;
     z-index: 1055;
     right: 20px;
