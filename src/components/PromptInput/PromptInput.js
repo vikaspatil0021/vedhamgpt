@@ -12,7 +12,6 @@ import p from "./../../assets/profile_.jpg"
 const PromptInput = (props) => {
     const [prompt, setPrompt] = useState('');
     const [fileSelected, setFileSelected] = useState('')
-    console.log(fileSelected);
 
     // displaying the image container
     useEffect(() => {
@@ -88,70 +87,64 @@ const PromptInput = (props) => {
         mp_ani_icon.style.display = 'none';
     }
 
-    // upload image to cloudinary
-    const uploadImage = async () => {
-        const formData = new FormData();
-        formData.append("file", fileSelected);
-        formData.append("upload_preset", "kpuktd4f");
-        await axios.post("https://api.cloudinary.com/v1_1/dt55mivpf/image/upload", formData)
-            .then((res) => {
-                console.log(res.data.url);
-            }).catch((err) => {
-                console.log(err.message);
-            })
-
-    }
-
-    // <-----------------onSumbit Prompt Trigger----->
     // submit loading animation function
     const loadAni = ({ loading, text }) => {
         const inputGroup = document.querySelector('.pi-input-group-disabled');
         const inputBtn = document.querySelector('.pi-button-disabled');
         const loaderText = document.querySelector('.pi-loader-text span');
+        const piInput = document.querySelector('.pi-input');
+        const imgXMark = document.querySelector('.pi-img-xmark');
 
         if (loading) {
             inputGroup.style.display = 'flex';
             inputBtn.style.display = 'block';
+            imgXMark.style.display='none';
 
             setTimeout(() => {
                 inputGroup.style.opacity = 1;
                 loaderText.innerHTML = text;
             }, 10);
         } else {
+
             inputGroup.style.opacity = 0;
             setTimeout(() => {
                 inputGroup.style.display = 'none';
                 inputBtn.style.display = 'none';
+                imgXMark.style.display='inline';
             }, 400);
+            piInput.style.height = "auto";
         }
     }
 
-    const onSubmitPrompt = () => {
+    // upload image to cloudinary
+    const uploadImage = async () => {
+        loadAni({ loading: true, text: "Uploading image" });
+
+        const formData = new FormData();
+        formData.append("file", fileSelected);
+        formData.append("upload_preset", "kpuktd4f");
+        return await axios.post("https://api.cloudinary.com/v1_1/dt55mivpf/image/upload", formData)
+            .then((res) => {
+                return res.data.url;
+            }).catch((err) => {
+                props.alertBoxTrigger(err.message);
+                loadAni({ loading: false });
+            })
+    }
+
+    // <-----------------onSumbit Prompt Trigger----->
+    const onSubmitPrompt = async() => {
         if (fileSelected === '' || fileSelected === undefined || fileSelected === null) {
-            props.setAlertMsg("No image selected.")
-            const abContainer = document.querySelector('.ab-container');
-            abContainer.style.display = "flex";
-            setTimeout(() => {
+            props.alertBoxTrigger("No image file selected.")
+        }else{
+            // step 1 upload image to cloudinary
+            const resultURL =  await uploadImage();
+            
+                setPrompt('');
+                setFileSelected('')
+                loadAni({ loading: false });
 
-                abContainer.style.opacity = 1
-            }, 10);
-            setTimeout(() => {
-                abContainer.style.opacity = 0
-                setTimeout(() => {
-
-                    abContainer.style.display = "none";
-                }, 400);
-
-            }, 4000);
         }
-        // loadAni({ loading: true, text: "Uploading image" });
-        // console.log("g");
-        // setTimeout(() => {
-        //     setPrompt('');
-        //     const piInput = document.querySelector('.pi-input');
-        //     piInput.style.height = "auto";
-        //     loadAni({ loading: false });
-        // }, 9000);
     }
 
     return (

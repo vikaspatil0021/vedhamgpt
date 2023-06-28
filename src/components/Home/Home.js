@@ -6,6 +6,21 @@ import AlertBox from '../AlertBox/AlertBox';
 const Home = () => {
     const [alertMsg,setAlertMsg] = useState('This is a Alert message');
 
+
+    // trigger alertbox for errors
+    const alertBoxTrigger = (msg) =>{
+        setAlertMsg(msg)
+        const abContainer = document.querySelector('.ab-container');
+        abContainer.style.display = "flex";
+        abContainer.style.opacity = 1
+
+        setTimeout(() => {
+            abContainer.style.opacity = 0
+        }, 4000);
+        setTimeout(() => {
+            abContainer.style.display = "none";
+        }, 4330);
+    }
     return (
         <div>
             <div>
@@ -20,7 +35,7 @@ const Home = () => {
                 </div>
             </div>
             <div>
-                <PromptInput setAlertMsg={setAlertMsg} />
+                <PromptInput alertBoxTrigger={alertBoxTrigger} />
             </div>
             <AlertBox alertMsg={alertMsg} />
         </div>
