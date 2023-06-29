@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Header from '../Header/Header';
 import PromptInput from '../PromptInput/PromptInput';
 import AlertBox from '../AlertBox/AlertBox';
+import Auth from '../Auth/Auth';
 
 const Home = () => {
     const [alertMsg,setAlertMsg] = useState('This is a Alert message');
@@ -20,6 +21,10 @@ const Home = () => {
         setTimeout(() => {
             abContainer.style.display = "none";
         }, 4330);
+    }
+
+    if(true){
+        return <Auth />
     }
     return (
         <div>
