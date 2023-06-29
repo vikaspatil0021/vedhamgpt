@@ -49,15 +49,17 @@ const PromptInput = (props) => {
         recognition.interimResults = true;
 
         recognition.start();
+        if(this.recognition){
 
-        const input = document.querySelector('.pi-input');
-        input.placeholder = "Listening ...";
-
-        // microphone icon switch
-        const mp_icon = document.querySelector('.pi-microphone-icon');
-        const mp_ani_icon = document.querySelector('.pi-microphone-ani-icon');
-        mp_icon.style.display = 'none';
-        mp_ani_icon.style.display = 'block';
+            const input = document.querySelector('.pi-input');
+            input.placeholder = "Listening ...";
+            
+            // microphone icon switch
+            const mp_icon = document.querySelector('.pi-microphone-icon');
+            const mp_ani_icon = document.querySelector('.pi-microphone-ani-icon');
+            mp_icon.style.display = 'none';
+            mp_ani_icon.style.display = 'block';
+        }
     }
 
     recognition.onresult = (event) => {
@@ -141,7 +143,7 @@ const PromptInput = (props) => {
             const resultURL =  await uploadImage();
             
                 setPrompt('');
-                setFileSelected('')
+                setFileSelected('');
                 loadAni({ loading: false });
 
         }

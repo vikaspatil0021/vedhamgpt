@@ -28,8 +28,8 @@ const Home = () => {
             </div>
 
             <div>
-                <div style={{ background: "#111", height: "100vh", width: '100%', display: 'flex', justifyContent: 'center' }}>
-                    {/* <div style={{ background: "#000", height: "400px", width: '800px', margin: '0 50px', border: '1px solid #333', borderRadius: "8px" }}>
+                <div style={{ background: "#111",maxHeight:"100vh",overflow:"auto", height: "100vh", width: '100%', display: 'flex', justifyContent: 'center' }}>
+                    {/* <div style={{ background: "#000", height: "1400px", width: '800px', margin: '0 50px', border: '1px solid #333', borderRadius: "8px" }}>
                         hi
                     </div> */}
                 </div>
