@@ -37,7 +37,10 @@ const Auth = () => {
             }).catch((err) => {
                 console.log(err.essage);
                 loadAni_g({ loading: false, text: "Error: try again" })
-                changeHTML()
+                setTimeout(() => {
+                    
+                    changeHTML()
+                }, 3000);
 
 
             });
