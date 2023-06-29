@@ -50,9 +50,9 @@
 .a-brand-name > div > span{
     padding: 0 8px;
     color: #f2f2f2;
-    /* background: linear-gradient(25deg, #3b3bb9, #1CB5E0);
+    background: linear-gradient(25deg, #00d2ff, #3a7bd5);
     -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text; */
+    -webkit-background-clip: text;
 }
 
 .a-input-group{
