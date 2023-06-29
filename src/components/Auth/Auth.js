@@ -13,9 +13,12 @@ const Auth = () => {
                     <form className='a-form'>
 
                         <div className='a-brand-name'>
+                        <div>
+
                             <img src={profile_} alt='profile' className='h-profileImg' />
 
                             <span >Vedham</span>
+                        </div>
                         </div>
                         <div className='a-input-group'>
                             <input type='text' className='a-input' placeholder='user@gmail.com' required />

@@ -30,29 +30,36 @@
 
 .a-brand-name{
     font-size: 20px;
-    font-weight: bold;
-    color: #fff;
-    /* background: linear-gradient(45deg, #ff1028, #4894ff);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text; */
+    font-weight: bold;    
     margin:0 0 45px 0 ;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-flex;
+    background-color: #000;
+    border-radius: 30px;
 }
-.a-brand-name span{
+.a-brand-name > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:8px 15px;
+}
+.a-brand-name > div > span{
     padding: 0 8px;
+    background: linear-gradient(35deg, #ff1028, #4894ff);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
 .a-input-group{
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 25px;
+    margin-bottom: 40px;
+    /* display: none; */
 }
 .a-otp-div{
     display: flex;
     justify-content: center;
+    display: none;
 }
 .a-otp-input{
     background-color: #000;
@@ -65,7 +72,7 @@
 
 }
 .a-input{
-    padding: 10px 20px;
+    padding: 15px 20px;
     border-radius: 30px;
     background-color: #000;
     border: 1px solid #333;
@@ -76,7 +83,11 @@
     color: #cac8c8;
     font-size: 15px;
 }
-.a-input:focus,.a-otp-input:focus {
+.a-input:focus{
+    border: 1px solid #888;
+    outline: 0;
+}
+.a-otp-input:focus {
     border: 1px solid #05ff11;
     outline: 0;
 
