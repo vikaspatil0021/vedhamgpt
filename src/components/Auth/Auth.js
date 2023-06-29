@@ -15,7 +15,7 @@ const Auth = () => {
                         <div className='a-brand-name'>
                         <div>
 
-                            <img src={profile_} alt='profile' className='h-profileImg' />
+                            <img src={profile_} alt='profile' className='a-logo' />
 
                             <span >Vedham</span>
                         </div>

@@ -26,25 +26,29 @@
     padding: 30px;
     text-align: center;
 }
-
+.a-logo{
+    width: 25px;
+    border-radius: 50%;
+    margin:7px 7px 7px 7px;
+}
 
 .a-brand-name{
     font-size: 20px;
     font-weight: bold;    
     margin:0 0 45px 0 ;
     display: inline-flex;
-    background-color: #000;
+    /* background-color: #000; */
     border-radius: 30px;
 }
 .a-brand-name > div{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding:8px 15px;
+    padding:3px 5px;
 }
 .a-brand-name > div > span{
     padding: 0 8px;
-    background: linear-gradient(35deg, #ff1028, #4894ff);
+    background: linear-gradient(25deg, #ff9900, #6f00ff);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
@@ -106,4 +110,6 @@
         width: 100%;
 
     }
+
+    
 }
