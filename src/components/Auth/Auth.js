@@ -33,16 +33,18 @@ const Auth = () => {
 
         await axios.post(process.env.REACT_APP_SERVER_URL + "/authorization-g", { email })
             .then((res) => {
-                loadAni_g({ loading: true, text: "OTP Sent Successfully" })
+                if(res.data.EmailSent){
+
+                    loadAni_g({ loading: true, text: "OTP Sent Successfully" })
+                    setTimeout(() => {
+                        
+                        changeHTML()
+                    }, 1000);
+                }
             }).catch((err) => {
                 console.log(err.essage);
                 loadAni_g({ loading: false, text: "Error: try again" })
-                setTimeout(() => {
-                    
-                    changeHTML()
-                }, 3000);
-
-
+                
             });
 
 
@@ -108,7 +110,7 @@ const Auth = () => {
                                 onChange={setOtp}
                                 numInputs={4}
                                 renderSeparator={<span></span>}
-                                renderInput={(props) => <input type='number' {...props} className='a-otp-input' />}
+                                renderInput={(props) => <input type='number' autoFocus {...props} className='a-otp-input' />}
                             />
                         </div>
 

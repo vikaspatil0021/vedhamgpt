@@ -84,8 +84,8 @@
     border: 1px solid #555;
 
 }
-.a-input-group{
-    transition: opacity 1s;
+.a-input-group,.a-submit-btn{
+    transition: opacity .5s;
 }
 
 .a-input-group{
