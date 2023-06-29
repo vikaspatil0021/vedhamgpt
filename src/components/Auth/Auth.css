@@ -37,7 +37,7 @@
     font-weight: bold;    
     margin:0 0 45px 0 ;
     display: inline-flex;
-    /* background-color: #000; */
+    background-color: #000;
     border-radius: 30px;
 }
 .a-brand-name > div{
@@ -48,9 +48,10 @@
 }
 .a-brand-name > div > span{
     padding: 0 8px;
-    background: linear-gradient(25deg, #ff9900, #6f00ff);
+    color: #f2f2f2;
+    /* background: linear-gradient(25deg, #3b3bb9, #1CB5E0);
     -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+    -webkit-background-clip: text; */
 }
 
 .a-input-group{
