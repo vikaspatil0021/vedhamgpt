@@ -35,6 +35,9 @@
     font-weight: bold;
     font-size: 19px;
     cursor:default;
+    background: linear-gradient(25deg, #00d2ff, #3a7bd5);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
 /* profile */

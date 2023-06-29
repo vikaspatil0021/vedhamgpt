@@ -21,7 +21,7 @@ const Auth = () => {
                         </div>
                         </div>
                         <div className='a-input-group'>
-                            <input type='text' className='a-input' placeholder='user@gmail.com' required />
+                            <input type='text' className='a-input' placeholder='user@gmail.com' autocapitalize="off" required />
                         </div>
                         <div className='a-otp-div'>
 
