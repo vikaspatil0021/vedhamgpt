@@ -61,6 +61,14 @@
     margin:0px 0px 0px 5px;
     display: none;
 }
+.a-otp-spinner{
+    display: inline-flex;
+    align-items: center;
+    color: #fff;
+    margin-top: 10px ;
+    font-size: 13px;
+    display: none;
+}
 .a-submit-btn{
     all: unset;
     cursor: pointer;

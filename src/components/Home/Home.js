@@ -5,11 +5,11 @@ import AlertBox from '../AlertBox/AlertBox';
 import Auth from '../Auth/Auth';
 
 const Home = () => {
-    const [alertMsg,setAlertMsg] = useState('This is a Alert message');
-
+    const [alertMsg, setAlertMsg] = useState('This is a Alert message');
+    const token01 = localStorage.getItem("token01")
 
     // trigger alertbox for errors
-    const alertBoxTrigger = (msg) =>{
+    const alertBoxTrigger = (msg) => {
         setAlertMsg(msg)
         const abContainer = document.querySelector('.ab-container');
         abContainer.style.display = "flex";
@@ -23,12 +23,15 @@ const Home = () => {
         }, 4330);
     }
 
-    if(true){
-        return  <div>
-         <Auth alertBoxTrigger={alertBoxTrigger} />
-         <AlertBox alertMsg={alertMsg} />
+    if (!token01) {
+        return (
 
-        </div>
+            <div>
+                <Auth alertBoxTrigger={alertBoxTrigger} />
+                <AlertBox alertMsg={alertMsg} />
+
+            </div>
+        )
     }
     return (
         <div>
@@ -37,7 +40,7 @@ const Home = () => {
             </div>
 
             <div>
-                <div style={{ background: "#111",maxHeight:"100vh",overflow:"auto", height: "100vh", width: '100%', display: 'flex', justifyContent: 'center' }}>
+                <div style={{ background: "#111", maxHeight: "100vh", overflow: "auto", height: "100vh", width: '100%', display: 'flex', justifyContent: 'center' }}>
                     {/* <div style={{ background: "#000", height: "1400px", width: '800px', margin: '0 50px', border: '1px solid #333', borderRadius: "8px" }}>
                         hi
                     </div> */}

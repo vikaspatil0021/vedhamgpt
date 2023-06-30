@@ -6,8 +6,8 @@ import axios from "axios"
 import { IonSpinner } from '@ionic/react';
 const Auth = (props) => {
     const [info, setInfo] = useState({
-        email:'',
-        fName:''
+        email: '',
+        fName: ''
     })
     const [otp, setOtp] = useState('')
 
@@ -19,7 +19,7 @@ const Auth = (props) => {
         if (loading) {
 
             btn.disabled = true;
-            if(border) btn.style.border = border
+            if (border) btn.style.border = border
             btnSpan.textContent = text;
 
             spinner.style.display = "inline-flex";
@@ -33,13 +33,13 @@ const Auth = (props) => {
 
 
     const authOTP_g = async () => {
-        loadAni_g({ loading: true, text: "Sending OTP",border:"1px solid #333" })
+        loadAni_g({ loading: true, text: "Sending OTP", border: "1px solid #333" })
 
-        await axios.post(process.env.REACT_APP_SERVER_URL + "/authorization-g", { email:info.email })
+        await axios.post(process.env.REACT_APP_SERVER_URL + "/authorization-g", { email: info.email })
             .then((res) => {
                 if (res.data.EmailSent) {
 
-                    loadAni_g({ loading: true, text: "OTP Sent Successfully",border:"2px solid green" })
+                    loadAni_g({ loading: true, text: "OTP Sent Successfully", border: "2px solid green" })
                     setTimeout(() => {
 
                         changeHTML()
@@ -48,7 +48,7 @@ const Auth = (props) => {
             }).catch((err) => {
                 console.log(err.message);
                 props.alertBoxTrigger(err.message)
-                loadAni_g({ loading: false, text: "Get OTP"})
+                loadAni_g({ loading: false, text: "Get OTP" })
 
             });
 
@@ -61,6 +61,7 @@ const Auth = (props) => {
 
         const submitBtn = document.querySelector('.a-submit-btn');
         const otpDiv = document.querySelector('.a-otp-div')
+        const otpSpinner = document.querySelector('.a-otp-spinner')
 
         inputGroup.style.opacity = 0;
         submitBtn.style.opacity = 0;
@@ -69,11 +70,18 @@ const Auth = (props) => {
             submitBtn.style.display = "none";
             otpDiv.style.display = 'flex';
             inputEmail.disabled = true;
+            otpSpinner.style.display = 'inline-flex'
 
         }, 600);
     }
 
-    const loadAni_v = () => {
+    const loadAni_v = ({ loading,text }) => {
+        const otpSpinnerSpan = document.querySelector('.a-otp-spinner span');
+        if(loading){
+            otpSpinnerSpan.innerHTML = text
+        }else{
+            otpSpinnerSpan.innerHTML = "Enter OTP"
+        }
 
     }
 
@@ -84,12 +92,25 @@ const Auth = (props) => {
     }, [otp])
 
     const authOTP_v = async () => {
-
-        await axios.post(process.env.REACT_APP_SERVER_URL + "/authorization-v", { email:info.email, otp, fName: info.fName})
+        loadAni_v({ loading: true, text:"Verifying OTP" })
+        await axios.post(process.env.REACT_APP_SERVER_URL + "/authorization-v", { email: info.email, otp, fName: info.fName })
             .then((res) => {
-                console.log(res.data);
+                if(res.data.status){
+                    console.log(res.data);
+                    loadAni_v({ loading: true, text:"👍 OTP Verified  >  Redirecting..." });
+                    localStorage.setItem("token01",res.data.token);
+                    setTimeout(() => {
+                            window.location.reload()
+                    }, 1000);
+                }
+
             }).catch((err) => {
-                console.log(err.message);
+                if (err.response.data.Error) {
+                    setOtp('')
+                    props.alertBoxTrigger(err.response.data.Error);
+                    loadAni_v({ loading: true, text:"Enter OTP" })
+
+                }
 
             });
     }
@@ -113,17 +134,17 @@ const Auth = (props) => {
                         <div id='a-input-fName' className='a-input-group'>
                             <input type='text' className='a-input' placeholder='Ex: Vikas Patil' autocapitalize="off" required value={info.fName} onChange={(e) => {
                                 setInfo({
-                                    fName:e.target.value,
-                                    email:info.email
-                                    })
+                                    fName: e.target.value,
+                                    email: info.email
+                                })
                             }} />
                         </div>
-                        <div  className='a-input-group' >
-                            <input id='a-input-email' type='email' className='a-input' placeholder='user@gmail.com' autocapitalize="off" required value={info.email} onChange={(e) => {
+                        <div className='a-input-group' >
+                            <input id='a-input-email' type='email' className='a-input' placeholder='user@gmail.com' autoComplete='off' autocapitalize="off" required value={info.email} onChange={(e) => {
                                 setInfo({
-                                    email:e.target.value,
-                                    fName:info.fName
-                                    })
+                                    email: e.target.value,
+                                    fName: info.fName
+                                })
                             }} />
                         </div>
                         <button type='submit' className='a-submit-btn'>
@@ -141,8 +162,12 @@ const Auth = (props) => {
                                 onChange={setOtp}
                                 numInputs={4}
                                 renderSeparator={<span></span>}
-                                renderInput={(props) => <input type='number' autoFocus {...props} className='a-otp-input' />}
+                                renderInput={(props) => <input type='number' {...props} className='a-otp-input' />}
                             />
+                        </div>
+                        <div class="a-otp-spinner">
+                            <IonSpinner name="lines-sharp-small" />
+                            <span>Enter OTP</span>
                         </div>
 
                     </form>
