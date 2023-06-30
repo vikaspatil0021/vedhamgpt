@@ -24,7 +24,11 @@ const Home = () => {
     }
 
     if(true){
-        return <Auth />
+        return  <div>
+         <Auth alertBoxTrigger={alertBoxTrigger} />
+         <AlertBox alertMsg={alertMsg} />
+
+        </div>
     }
     return (
         <div>
