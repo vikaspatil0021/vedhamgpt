@@ -92,13 +92,20 @@ const Auth = (props) => {
     }, [otp])
 
     const authOTP_v = async () => {
+        const otpInputArr = document.querySelectorAll('.a-otp-input');
+
         loadAni_v({ loading: true, text:"Verifying OTP" })
         await axios.post(process.env.REACT_APP_SERVER_URL + "/authorization-v", { email: info.email, otp, fName: info.fName })
             .then((res) => {
                 if(res.data.status){
-                    console.log(res.data);
                     loadAni_v({ loading: true, text:"👍 OTP Verified  >  Redirecting..." });
                     localStorage.setItem("token01",res.data.token);
+
+                    otpInputArr.forEach((each)=>{
+                        each.style.border = "1px solid #05ff11";
+                    })
+                        
+
                     setTimeout(() => {
                             window.location.reload()
                     }, 1000);
@@ -108,8 +115,11 @@ const Auth = (props) => {
                 if (err.response.data.Error) {
                     setOtp('')
                     props.alertBoxTrigger(err.response.data.Error);
-                    loadAni_v({ loading: true, text:"Enter OTP" })
+                    loadAni_v({ loading: true, text:"Enter OTP" });
+                    otpInputArr.forEach((each)=>{
 
+                    each.style.border = "1px solid #ee3737";
+                    })
                 }
 
             });
