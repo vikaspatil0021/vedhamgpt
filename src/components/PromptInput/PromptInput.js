@@ -10,6 +10,8 @@ import p from "./../../assets/profile_.jpg"
 
 
 const PromptInput = (props) => {
+    const token01 = localStorage.getItem("token01")
+
     const [prompt, setPrompt] = useState('');
     const [fileSelected, setFileSelected] = useState('')
 
@@ -50,10 +52,10 @@ const PromptInput = (props) => {
 
         recognition.start();
 
-        
+
     }
 
-    recognition.onstart = () =>{
+    recognition.onstart = () => {
         const input = document.querySelector('.pi-input');
         input.placeholder = "Listening ...";
 
@@ -102,7 +104,7 @@ const PromptInput = (props) => {
         if (loading) {
             inputGroup.style.display = 'flex';
             inputBtn.style.display = 'block';
-            imgXMark.style.display='none';
+            imgXMark.style.display = 'none';
 
             setTimeout(() => {
                 inputGroup.style.opacity = 1;
@@ -114,7 +116,7 @@ const PromptInput = (props) => {
             setTimeout(() => {
                 inputGroup.style.display = 'none';
                 inputBtn.style.display = 'none';
-                imgXMark.style.display='inline';
+                imgXMark.style.display = 'inline';
             }, 400);
             piInput.style.height = "auto";
         }
@@ -135,18 +137,40 @@ const PromptInput = (props) => {
                 loadAni({ loading: false });
             })
     }
+    // final step ===> generation insta caption
+    const generateCaption = async (imageURL) => {
+        loadAni({ loading: true, text: "Processing" });
+
+        return await axios.post(REACT_APP_SERVER_URL + "/prompt", {
+            imageURL,
+            extraInfo: prompt
+        },
+            {
+                headers: {
+                    "Authorization": "Bearer " + token01
+                }
+            }).then((res) => {
+                loadAni({ loading: false });
+                return res.data;
+
+            }).catch((err) => {
+                props.alertBoxTrigger(err.message);
+                loadAni({ loading: false });
+            })
+    }
 
     // <-----------------onSumbit Prompt Trigger----->
-    const onSubmitPrompt = async() => {
+    const onSubmitPrompt = async () => {
         if (fileSelected === '' || fileSelected === undefined || fileSelected === null) {
             props.alertBoxTrigger("No image file selected.")
-        }else{
+        } else {
             // step 1 upload image to cloudinary
-            const resultURL =  await uploadImage();
-            
-                setPrompt('');
-                setFileSelected('');
-                loadAni({ loading: false });
+            const resultURL = await uploadImage();
+            console.log(resultURL);
+            const caption = generateCaption(resultURL);
+            setPrompt('');
+            setFileSelected('');
+            console.log(caption)
 
         }
     }
