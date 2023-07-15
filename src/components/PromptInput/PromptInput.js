@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "./PromptInput.css";
 
 import { IonSpinner } from '@ionic/react';
@@ -11,7 +11,7 @@ import p from "./../../assets/profile_.jpg"
 
 const PromptInput = (props) => {
     const token01 = localStorage.getItem("token01")
-
+    const seed = useRef(0);
     const [prompt, setPrompt] = useState('');
     const [fileSelected, setFileSelected] = useState('')
 
@@ -27,6 +27,12 @@ const PromptInput = (props) => {
             }, 100)
         }
     }, [fileSelected])
+
+    useEffect(()=>{
+        if(fileSelected===''){
+         seed.current = Math.random();   
+        }
+    },[fileSelected])
 
     // controlling the rows of textarea by scrollheight
     const handleTextareaHeight = () => {
@@ -141,7 +147,7 @@ const PromptInput = (props) => {
     const generateCaption = async (imageURL) => {
         loadAni({ loading: true, text: "Processing" });
 
-        return await axios.post(REACT_APP_SERVER_URL + "/prompt", {
+        return await axios.post(process.env.REACT_APP_SERVER_URL + "/prompt", {
             imageURL,
             extraInfo: prompt
         },
@@ -156,6 +162,8 @@ const PromptInput = (props) => {
             }).catch((err) => {
                 props.alertBoxTrigger(err.message);
                 loadAni({ loading: false });
+                setFileSelected('');
+
             })
     }
 
@@ -195,10 +203,11 @@ const PromptInput = (props) => {
                     <div className='pi-input-width'>
 
                         <div className='pi-input-group'>
-                            <div className='pi-camera-icon'>
+                            <div key={seed.current} className='pi-camera-icon'>
                                 <i class="fa-solid fa-camera"></i>
-                                <input type='file' className='pi-file-input' accept="image/jpeg, image/png, image/jpg" onChange={(e) => {
+                                <input  type='file' className='pi-file-input' accept="image/jpeg, image/png, image/jpg" onChange={(e) => {
                                     setFileSelected(e.target.files[0]);
+                                    console.log(e.target.files);
                                 }} />
                             </div>
 
