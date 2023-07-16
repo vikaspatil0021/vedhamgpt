@@ -61,7 +61,8 @@
 }
 
 .com-o-text {
-    color: #82b2ffe6;
+    color:#00d0ffe1 ;
+    /* color: #fff; */
     font-weight: 600;
     background-color: #222;
     padding: 10px;
@@ -73,7 +74,7 @@
 @media (max-width:700px) {
     .com-box {
         margin-top: 56px;
-        padding: 10px 0 140px 0;
+        padding: 10px 0 145px 0;
 
     }
 
