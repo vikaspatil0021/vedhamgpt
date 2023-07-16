@@ -28,11 +28,11 @@ const PromptInput = (props) => {
         }
     }, [fileSelected])
 
-    useEffect(()=>{
-        if(fileSelected===''){
-         seed.current = Math.random();   
+    useEffect(() => {
+        if (fileSelected === '') {
+            seed.current = Math.random();
         }
-    },[fileSelected])
+    }, [fileSelected])
 
     // controlling the rows of textarea by scrollheight
     const handleTextareaHeight = () => {
@@ -145,7 +145,7 @@ const PromptInput = (props) => {
     }
     // final step ===> generation insta caption
     const generateCaption = async (imageURL) => {
-        loadAni({ loading: true, text: "Processing" });
+        loadAni({ loading: true, text: "Generating" });
 
         return await axios.post(process.env.REACT_APP_SERVER_URL + "/prompt", {
             imageURL,
@@ -173,12 +173,12 @@ const PromptInput = (props) => {
             props.alertBoxTrigger("No image file selected.")
         } else {
             // step 1 upload image to cloudinary
-            const resultURL = await uploadImage();
-            console.log(resultURL);
-            const caption = generateCaption(resultURL);
+            const imageURL = await uploadImage();
+            //step 2 generate caption
+            const finalStatus = await generateCaption(imageURL);
             setPrompt('');
             setFileSelected('');
-            console.log(caption)
+            console.log(finalStatus)
 
         }
     }
@@ -205,7 +205,7 @@ const PromptInput = (props) => {
                         <div className='pi-input-group'>
                             <div key={seed.current} className='pi-camera-icon'>
                                 <i class="fa-solid fa-camera"></i>
-                                <input  type='file' className='pi-file-input' accept="image/jpeg, image/png, image/jpg" onChange={(e) => {
+                                <input type='file' className='pi-file-input' accept="image/jpeg, image/png, image/jpg" onChange={(e) => {
                                     setFileSelected(e.target.files[0]);
                                     console.log(e.target.files);
                                 }} />
@@ -228,7 +228,7 @@ const PromptInput = (props) => {
                                 />
                             </div>
 
-                            <button className='pi-button' role='button' type='submit' readOnly>
+                            <button className='pi-button' type='submit' readOnly>
                                 <span class="material-symbols-outlined">send</span>
                             </button>
 

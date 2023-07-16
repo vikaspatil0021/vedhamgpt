@@ -112,9 +112,11 @@ const Auth = (props) => {
                 }
 
             }).catch((err) => {
-                if (err.response.data.Error) {
+                console.log(err)
+                const error = err.response.data.Error;
+                if (error) {
                     setOtp('')
-                    props.alertBoxTrigger(err.response.data.Error);
+                    props.alertBoxTrigger(error);
                     loadAni_v({ loading: true, text:"Enter OTP" });
                     otpInputArr.forEach((each)=>{
 

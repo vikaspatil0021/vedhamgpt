@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../Header/Header';
 import PromptInput from '../PromptInput/PromptInput';
 import AlertBox from '../AlertBox/AlertBox';
 import Auth from '../Auth/Auth';
+import axios from 'axios';
 
 const Home = () => {
     const [alertMsg, setAlertMsg] = useState('This is a Alert message');
@@ -17,19 +18,40 @@ const Home = () => {
 
         setTimeout(() => {
             abContainer.style.opacity = 0
-        }, 4000);
+        }, 6500);
         setTimeout(() => {
             abContainer.style.display = "none";
-        }, 4330);
+        }, 6830);
     }
+
+    // check if the token is expired or invalid 
+    useEffect(() => {
+        if (token01) {
+
+            axios.get(process.env.REACT_APP_SERVER_URL + '/check_token', {
+                headers: {
+                    "Authorization": "Bearer " + token01
+                }
+            }).then(res => {
+                console.log(res.data)
+            }).catch(err => {
+                const error = err.response.data.Error;
+                if (error) {
+
+                    console.log(error);
+                    alertBoxTrigger(error.message);
+                    localStorage.removeItem('token01');
+                }
+
+            })
+        }
+    }, [])
 
     if (!token01) {
         return (
-
             <div>
                 <Auth alertBoxTrigger={alertBoxTrigger} />
                 <AlertBox alertMsg={alertMsg} />
-
             </div>
         )
     }
