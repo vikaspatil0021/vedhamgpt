@@ -195,7 +195,17 @@
     right: 20px;
     width: 29px;
     height: 30px;
-    background-color: #222;
+    background-color: transparent;
     opacity: .4;
     display: none;
+}
+
+/* pi shadow */
+.pi-shadow{
+    width: 100vw;
+    height: 88px;
+    position: absolute;
+    bottom:-30px;
+    z-index: -1;
+    background-image: linear-gradient(180deg,rgba(53,55,64,0),#222 48.85%);
 }

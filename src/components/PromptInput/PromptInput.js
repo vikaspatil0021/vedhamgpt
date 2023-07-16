@@ -255,6 +255,7 @@ const PromptInput = ({ alertBoxTrigger, setUpdatedCompletions }) => {
                         </div>
                     </div>
                 </form>
+            <div className='pi-shadow'></div>
             </div>
         </div>
     )
