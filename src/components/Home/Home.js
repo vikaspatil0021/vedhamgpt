@@ -4,8 +4,11 @@ import PromptInput from '../PromptInput/PromptInput';
 import AlertBox from '../AlertBox/AlertBox';
 import Auth from '../Auth/Auth';
 import axios from 'axios';
+import Completions from '../Completions/Completions';
 
 const Home = () => {
+
+    const [updatedComplations,setUpdatedCompletions] = useState(0)
     const [alertMsg, setAlertMsg] = useState('This is a Alert message');
     const token01 = localStorage.getItem("token01")
 
@@ -62,14 +65,10 @@ const Home = () => {
             </div>
 
             <div>
-                <div style={{ background: "#111", maxHeight: "100vh", overflow: "auto", height: "100vh", width: '100%', display: 'flex', justifyContent: 'center' }}>
-                    {/* <div style={{ background: "#000", height: "1400px", width: '800px', margin: '0 50px', border: '1px solid #333', borderRadius: "8px" }}>
-                        hi
-                    </div> */}
-                </div>
+                <Completions alertBoxTrigger={alertBoxTrigger} updatedComplations={updatedComplations} />
             </div>
             <div>
-                <PromptInput alertBoxTrigger={alertBoxTrigger} />
+                <PromptInput alertBoxTrigger={alertBoxTrigger} setUpdatedCompletions={setUpdatedCompletions} />
             </div>
             <AlertBox alertMsg={alertMsg} />
         </div>

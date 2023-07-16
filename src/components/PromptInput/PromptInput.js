@@ -5,13 +5,13 @@ import { IonSpinner } from '@ionic/react';
 
 import axios from "axios";
 
-import mp_loading from "./../../assets/loading1.gif"
-import p from "./../../assets/profile_.jpg"
 
 
-const PromptInput = (props) => {
+const PromptInput = ({ alertBoxTrigger, setUpdatedCompletions }) => {
     const token01 = localStorage.getItem("token01")
-    const seed = useRef(0);
+
+    const aRef = useRef(null);
+    
     const [prompt, setPrompt] = useState('');
     const [fileSelected, setFileSelected] = useState('')
 
@@ -28,11 +28,7 @@ const PromptInput = (props) => {
         }
     }, [fileSelected])
 
-    useEffect(() => {
-        if (fileSelected === '') {
-            seed.current = Math.random();
-        }
-    }, [fileSelected])
+
 
     // controlling the rows of textarea by scrollheight
     const handleTextareaHeight = () => {
@@ -139,7 +135,7 @@ const PromptInput = (props) => {
             .then((res) => {
                 return res.data.url;
             }).catch((err) => {
-                props.alertBoxTrigger(err.message);
+                alertBoxTrigger(err.message);
                 loadAni({ loading: false });
             })
     }
@@ -160,9 +156,8 @@ const PromptInput = (props) => {
                 return res.data;
 
             }).catch((err) => {
-                props.alertBoxTrigger(err.message);
+                alertBoxTrigger(err.message);
                 loadAni({ loading: false });
-                setFileSelected('');
 
             })
     }
@@ -170,18 +165,28 @@ const PromptInput = (props) => {
     // <-----------------onSumbit Prompt Trigger----->
     const onSubmitPrompt = async () => {
         if (fileSelected === '' || fileSelected === undefined || fileSelected === null) {
-            props.alertBoxTrigger("No image file selected.")
+            alertBoxTrigger("No image file selected.")
         } else {
             // step 1 upload image to cloudinary
             const imageURL = await uploadImage();
             //step 2 generate caption
             const finalStatus = await generateCaption(imageURL);
+            if (finalStatus.status === "OK") {
+                setUpdatedCompletions(Math.random())
+            }
+
+            resetInput()
             setPrompt('');
             setFileSelected('');
-            console.log(finalStatus)
+            console.log(finalStatus);
 
         }
     }
+
+    // reset the file input
+    const resetInput = () => {
+        aRef.current.value = null;
+    };
 
     return (
         <div className='pi-position'>
@@ -190,7 +195,9 @@ const PromptInput = (props) => {
                     <div className='pi-selected-image'>
                         <img src={(!fileSelected) ? '' : URL.createObjectURL(fileSelected)} alt='select_image' />
                         <div className='pi-img-xmark' onClick={() => {
-                            setFileSelected('')
+                            setFileSelected('');
+                            resetInput()
+
                         }}>
                             <i class="fa-solid fa-xmark"></i>
                         </div>
@@ -203,9 +210,9 @@ const PromptInput = (props) => {
                     <div className='pi-input-width'>
 
                         <div className='pi-input-group'>
-                            <div key={seed.current} className='pi-camera-icon'>
+                            <div className='pi-camera-icon'>
                                 <i class="fa-solid fa-camera"></i>
-                                <input type='file' className='pi-file-input' accept="image/jpeg, image/png, image/jpg" onChange={(e) => {
+                                <input ref={aRef} type='file' className='pi-file-input' accept="image/jpeg, image/png, image/jpg" onChange={(e) => {
                                     setFileSelected(e.target.files[0]);
                                     console.log(e.target.files);
                                 }} />
