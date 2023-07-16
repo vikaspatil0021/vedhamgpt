@@ -1,3 +1,11 @@
+.mobile {
+    display: none;
+}
+
+.desktop {
+    display: block;
+}
+
 .com-container {
     background: #222;
     max-height: 100vh;
@@ -8,7 +16,7 @@
     padding-bottom: 88px;
 }
 
-.com-box{
+.com-box {
     margin-top: 61px;
     max-width: 700px;
     width: 100%;
@@ -19,10 +27,11 @@
     overflow: auto;
 }
 
-.com-box::-webkit-scrollbar{
+.com-box::-webkit-scrollbar {
     display: none;
 }
-.com-each-completion{
+
+.com-each-completion {
     background-color: #000;
     border-radius: 20px;
     margin-bottom: 15px;
@@ -31,25 +40,29 @@
     border: solid 1px #1e1e1e;
 }
 
-.com-each-completion img{
+.com-each-completion img {
     width: 100px;
     min-width: 100px;
     height: 130px;
     border-radius: 10px;
     object-fit: contain;
     background-color: #fff;
-    
+
 }
-.com-text{
+
+.com-text {
     padding: 0 15px;
     width: 100%;
+    letter-spacing: .5px;
 }
-.com-i-text{
+
+.com-i-text {
     color: #f2f2f2;
     font-weight: 600;
     padding: 10px;
 }
-.com-o-text{
+
+.com-o-text {
     color: #aecbfa;
     font-weight: 700;
     background-color: #222;
@@ -58,15 +71,33 @@
 }
 
 @media (max-width:700px) {
-    .com-box{
+    .com-box {
         margin-top: 56px;
     }
-    .com-text{
-        padding: 0 0 0 15px;
+
+    .com-text {
+        padding: 0 0 15px 0;
+        display: flex;
+
     }
-    .com-each-completion img{
-        width: 70px;
-        min-width: 70px;
-        height: 80px;
+
+    .com-each-completion {
+        border-radius: 0;
+        display: block;
     }
+
+    .com-each-completion img {
+        width: 50px;
+        min-width: 50px;
+        height: 60px;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    .desktop {
+        display: none;
+    }
+
 }

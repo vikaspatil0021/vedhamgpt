@@ -31,17 +31,23 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
     return (
         <div className='com-container'>
             <div className='com-box'>
-                {[...comData].map((each,index) => {
+                {[...comData].map((each, index) => {
                     return (
                         <div key={index} className='com-each-completion'>
-                            <img src={each.imageURL} alt='completion' />
+                            <img src={each.imageURL} alt='completion' className='desktop' />
                             <div className='com-text'>
+                                {/* image for mobile  */}
+                                <img src={each.imageURL} alt='completion' className='mobile' />
+
                                 <div className='com-i-text'>
                                     {each.Qno + '. ' + each.inputText}
                                 </div>
-                                <div className='com-o-text'>
+                                <div className='com-o-text desktop'>
                                     {each.outputText.replaceAll("\"", '')}
                                 </div>
+                            </div>
+                            <div className='com-o-text mobile'>
+                                {each.outputText.replaceAll("\"", '')}
                             </div>
                         </div>
                     )
