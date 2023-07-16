@@ -37,7 +37,7 @@
     margin-bottom: 15px;
     padding: 15px;
     display: flex;
-    border: solid 1px #1e1e1e;
+    border: solid 1px #444;
 }
 
 .com-each-completion img {
@@ -64,7 +64,7 @@
 
 .com-o-text {
     color: #aecbfa;
-    font-weight: 700;
+    font-weight: 600;
     background-color: #222;
     padding: 10px;
     border-radius: 10px;
@@ -84,6 +84,8 @@
     .com-each-completion {
         border-radius: 0;
         display: block;
+        border-left: 0;
+        border-right: 0;
     }
 
     .com-each-completion img {
