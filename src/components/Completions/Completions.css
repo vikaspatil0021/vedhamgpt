@@ -13,7 +13,6 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-bottom: 88px;
 }
 
 .com-box {
@@ -22,8 +21,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: calc(100% - 165px);
-    padding: 15px 0 90px 0;
+    padding: 10px 0 95px 0;
     overflow: auto;
 }
 
@@ -57,13 +55,13 @@
 }
 
 .com-i-text {
-    color: #f2f2f2;
+    color: #c4c3c3;
     font-weight: 600;
     padding: 10px;
 }
 
 .com-o-text {
-    color: #aecbfa;
+    color: #82b2ff;
     font-weight: 600;
     background-color: #222;
     padding: 10px;
@@ -82,10 +80,6 @@
 
     }
 
-    .com-o-text{
-        font-weight: 500;
-
-    }
     .com-each-completion {
         border-radius: 0;
         display: block;
@@ -94,9 +88,9 @@
     }
 
     .com-each-completion img {
-        width: 70px;
-        min-width: 70px;
-        height: 80px;
+        width: 75px;
+        min-width: 75px;
+        height: 85px;
     }
 
     .mobile {
