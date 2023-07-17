@@ -214,7 +214,6 @@ const PromptInput = ({ alertBoxTrigger, setUpdatedCompletions }) => {
                                 <i class="fa-solid fa-camera"></i>
                                 <input ref={aRef} type='file' className='pi-file-input' accept="image/jpeg, image/png, image/jpg" onChange={(e) => {
                                     setFileSelected(e.target.files[0]);
-                                    console.log(e.target.files);
                                 }} />
                             </div>
 

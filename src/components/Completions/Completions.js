@@ -40,7 +40,7 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
                                 <img src={each.imageURL} alt='completion' className='mobile' />
 
                                 <div className='com-i-text'>
-                                    {each.Qno + '. ' + each.inputText}
+                                    {(comData.length - index) + ' - ' + each.inputText}
                                 </div>
                                 <div className='com-o-text desktop'>
                                     {each.outputText.replaceAll("\"", '')}
