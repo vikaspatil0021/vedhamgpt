@@ -70,6 +70,19 @@
     opacity: 0.85;
 }
 
+.com-loader{
+    display: inline-flex;
+    position: absolute; 
+    top: 65px;
+    color: #fff;
+    background-color: #000;
+    border-radius: 50%;
+    border: 1px solid #555;
+    padding: 2px;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+}
+
 @media (max-width:700px) {
     .com-box {
         margin-top: 56px;
