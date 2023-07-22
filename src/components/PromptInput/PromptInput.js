@@ -158,7 +158,6 @@ const PromptInput = ({ alertBoxTrigger, setUpdatedCompletions }) => {
             }).catch((err) => {
                 alertBoxTrigger(err.message);
                 loadAni({ loading: false });
-                return err.message;
 
             })
     }
@@ -180,7 +179,8 @@ const PromptInput = ({ alertBoxTrigger, setUpdatedCompletions }) => {
             setPrompt('');
             setFileSelected('');
             console.log(finalStatus);
-
+            const comBox = document.querySelector('.com-box');
+            comBox.scrollTop = 0;
         }
     }
 

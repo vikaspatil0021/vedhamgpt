@@ -26,18 +26,14 @@
 }
 
 .com-box::-webkit-scrollbar {
-    width:5px;
-    margin-left: 10px;
-}
-.com-box::-webkit-scrollbar-track {
-    background-color: #fff;
-    border-radius: 20px;
+    width: 5px;
 }
 
-.com-box::-webkit-scrollbar-thumb {
+.com-box::-webkit-scrollbar-thumb{
     background-color: #82b2ff;
     border-radius: 20px;
 }
+
 
 .com-each-completion {
     background-color: #000;
