@@ -33,13 +33,31 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
     }, [updatedComplations]);
 
 
-    const comLoader = (action) =>{
+    const comLoader = (action) => {
         const loader = document.querySelector('.com-loader');
-        if(action==="show"){
+        if (action === "show") {
             loader.style.opacity = 1;
-        }else{
+        } else {
             loader.style.opacity = 0;
         }
+    }
+
+
+    // copy text handler
+    const copyThat = (divId) =>{
+        const copyText = document.querySelector(divId + " .com-o-text p").innerHTML;
+        const copyBtn = document.querySelector(divId + " .com-o-text button");
+        const copyBtnI = document.querySelector(divId + " .com-o-text button i");
+
+        navigator.clipboard.writeText(copyText);
+        copyBtnI.classList.replace('fa-regular',"fa-solid");
+        copyBtnI.classList.replace('fa-clipboard',"fa-check");
+
+        setTimeout(() => {
+            copyBtnI.classList.replace("fa-solid","fa-regular");
+        copyBtnI.classList.replace("fa-check",'fa-clipboard');
+        copyBtn.blur();
+        }, 2000);
     }
 
     return (
@@ -47,7 +65,7 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
             <div className='com-box'>
                 {[...comData].map((each, index) => {
                     return (
-                        <div key={index} className='com-each-completion'>
+                        <div id={'com-today-' + (comData.length - index)} className='com-each-completion'>
                             <img src={each.imageURL} loading="lazy" alt='completion' className='desktop' />
                             <div className='com-text'>
                                 {/* image for mobile  */}
@@ -57,11 +75,21 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
                                     {(comData.length - index) + ' - ' + each.inputText}
                                 </div>
                                 <div className='com-o-text desktop'>
-                                    {each.outputText.replaceAll("\"", '')}
+                                    <p>{each.outputText.replaceAll("\"", '')}</p>
+                                    <button className='com-o-btn' onClick={()=>{
+                                        copyThat('#com-today-' + (comData.length - index))
+                                    }}>
+                                        <i class="fa-regular fa-clipboard"></i>
+                                    </button>
                                 </div>
                             </div>
                             <div className='com-o-text mobile'>
-                                {each.outputText.replaceAll("\"", '')}
+                                <p>{each.outputText.replaceAll("\"", '')}</p>
+                                <button className='com-o-btn' onClick={()=>{
+                                        copyThat('#com-today-' + (comData.length - index))
+                                    }}>
+                                    <i class="fa-regular fa-clipboard"></i>
+                                </button>
                             </div>
                         </div>
                     )
