@@ -26,10 +26,9 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
             const error = err.response?.data.Error;
             console.log(error);
             if (error) {
-                comLoader("hide")
                 alertBoxTrigger(error.message);
-
             }
+            comLoader("hide")
         })
     }, [updatedComplations]);
 
