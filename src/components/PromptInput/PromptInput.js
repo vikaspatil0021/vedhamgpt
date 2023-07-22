@@ -158,6 +158,7 @@ const PromptInput = ({ alertBoxTrigger, setUpdatedCompletions }) => {
             }).catch((err) => {
                 alertBoxTrigger(err.message);
                 loadAni({ loading: false });
+                return err.message;
 
             })
     }

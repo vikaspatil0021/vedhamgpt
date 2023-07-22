@@ -62,14 +62,14 @@
     display: none;
 }
 .a-otp-spinner{
-    display: inline-flex;
     align-items: center;
+    justify-content: center;
     color: #fff;
     margin-top: 10px ;
     font-size: 13px;
     display: none;
 }
-.a-submit-btn{
+.a-submit-btn,.a-resendOtp-btn{
     all: unset;
     cursor: pointer;
     padding: 8px 15px;
@@ -84,15 +84,21 @@
     align-items: center;
     
 }
-.a-submit-btn:disabled{
+.a-resendOtp-btn{
+    display: none;
+}
+
+
+.a-submit-btn:disabled,.a-resendOtp-btn:disabled{
     pointer-events: none;
     opacity: .5;
 }
-.a-submit-btn:hover{
+.a-submit-btn:hover,.a-resendOtp-btn:hover{
     border: 1px solid #555;
 
 }
-.a-input-group,.a-submit-btn{
+
+.a-input-group,.a-submit-btn,.a-resendOtp-btn{
     transition: opacity .5s;
 }
 

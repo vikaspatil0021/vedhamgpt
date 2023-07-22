@@ -44,6 +44,9 @@ const Home = () => {
                     console.log(error);
                     alertBoxTrigger(error.message);
                     localStorage.removeItem('token01');
+                    setTimeout(() => {
+                        window.location.pathname = "/"
+                    }, 500);
                 }
 
             })

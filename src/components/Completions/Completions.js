@@ -48,7 +48,7 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
                 {[...comData].map((each, index) => {
                     return (
                         <div key={index} className='com-each-completion'>
-                            <img src={each.imageURL} alt='completion' className='desktop' />
+                            <img src={each.imageURL} loading="lazy" alt='completion' className='desktop' />
                             <div className='com-text'>
                                 {/* image for mobile  */}
                                 <img src={each.imageURL} alt='completion' className='mobile' />

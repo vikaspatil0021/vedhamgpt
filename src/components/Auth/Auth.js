@@ -11,10 +11,10 @@ const Auth = (props) => {
     })
     const [otp, setOtp] = useState('')
 
-    const loadAni_g = ({ loading, text, border }) => {
-        const btn = document.querySelector('.a-submit-btn');
-        const btnSpan = document.querySelector('.a-submit-btn span');
-        const spinner = document.querySelector('.a-spinner');
+    const loadAni_g = ({ OTPtype, loading, text, border }) => {
+        const btn = document.querySelector((OTPtype==='send')?'.a-submit-btn':".a-resendOtp-btn");
+        const btnSpan = document.querySelector((OTPtype==='send')?'.a-submit-btn span':".a-resendOtp-btn span");
+        const spinner = document.querySelector((OTPtype==='send')?'.a-submit-btn .a-spinner':".a-resendOtp-btn .a-spinner");
 
         if (loading) {
 
@@ -29,17 +29,24 @@ const Auth = (props) => {
             btnSpan.textContent = text;
 
         }
+        if(OTPtype==="resend" && text==='OTP Sent Successfully'){
+            setTimeout(() => {
+                btn.style.border = "1px solid #333"
+
+                loadAni_g({OTPtype,  loading: false, text: "resend OTP" })
+            }, 500);
+        }
     }
 
 
-    const authOTP_g = async () => {
-        loadAni_g({ loading: true, text: "Sending OTP", border: "1px solid #333" })
+    const authOTP_g = async (OTPtype) => {
+        loadAni_g({OTPtype, loading: true, text: "Sending OTP", border: "1px solid #333" })
 
         await axios.post(process.env.REACT_APP_SERVER_URL + "/authorization-g", { email: info.email })
             .then((res) => {
                 if (res.data.EmailSent) {
 
-                    loadAni_g({ loading: true, text: "OTP Sent Successfully", border: "2px solid green" })
+                    loadAni_g({OTPtype,  loading: true, text: "OTP Sent Successfully", border: "2px solid green" })
                     setTimeout(() => {
 
                         changeHTML()
@@ -48,7 +55,7 @@ const Auth = (props) => {
             }).catch((err) => {
                 console.log(err.message);
                 props.alertBoxTrigger(err.message)
-                loadAni_g({ loading: false, text: "Get OTP" })
+                loadAni_g({OTPtype,  loading: false, text: "Get OTP" })
 
             });
 
@@ -60,8 +67,9 @@ const Auth = (props) => {
         const inputEmail = document.querySelector('#a-input-email');
 
         const submitBtn = document.querySelector('.a-submit-btn');
-        const otpDiv = document.querySelector('.a-otp-div')
-        const otpSpinner = document.querySelector('.a-otp-spinner')
+        const otpDiv = document.querySelector('.a-otp-div');
+        const otpSpinner = document.querySelector('.a-otp-spinner');
+        const resendOtpBtn = document.querySelector('.a-resendOtp-btn');
 
         inputGroup.style.opacity = 0;
         submitBtn.style.opacity = 0;
@@ -70,8 +78,8 @@ const Auth = (props) => {
             submitBtn.style.display = "none";
             otpDiv.style.display = 'flex';
             inputEmail.disabled = true;
-            otpSpinner.style.display = 'inline-flex'
-
+            otpSpinner.style.display = 'flex'
+            resendOtpBtn.style.display = "inline-flex"
         }, 600);
     }
 
@@ -131,7 +139,7 @@ const Auth = (props) => {
             <div className='a-c-div'>
                 <div className='a-form-box'>
                     <form method='POST' className='a-form' onSubmit={(e) => {
-                        authOTP_g();
+                        authOTP_g("send");
                         e.preventDefault()
                     }}>
 
@@ -181,6 +189,17 @@ const Auth = (props) => {
                             <IonSpinner name="lines-sharp-small" />
                             <span>Enter OTP</span>
                         </div>
+                        <button className='a-resendOtp-btn' onClick={(e) => {
+                        authOTP_g("resend");
+                        e.preventDefault()
+                    }}>
+                            <span>Resend OTP</span>
+                            <div className='a-spinner'>
+
+                                <IonSpinner name="lines-sharp-small" />
+                            </div>
+
+                        </button>
 
                     </form>
                 </div>
