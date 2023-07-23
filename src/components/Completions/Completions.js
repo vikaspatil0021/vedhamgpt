@@ -24,7 +24,6 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
 
         }).catch(err => {
             const error = err.response?.data.Error;
-            console.log(error);
             if (error) {
                 alertBoxTrigger(error.message);
             }
@@ -44,19 +43,19 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
 
 
     // copy text handler
-    const copyThat = (divId) =>{
-        const copyText = document.querySelector(divId + " .com-o-text p").innerHTML;
-        const copyBtn = document.querySelector(divId + " .com-o-text button");
-        const copyBtnI = document.querySelector(divId + " .com-o-text button i");
+    const copyThat = (id) => {
+        const copyText = document.querySelector(id + " p").innerHTML;
+        const copyBtn = document.querySelector(id + " button");
+        const copyBtnI = document.querySelector(id + " button i");
 
-        navigator.clipboard.writeText(copyText);
-        copyBtnI.classList.replace('fa-regular',"fa-solid");
-        copyBtnI.classList.replace('fa-clipboard',"fa-check");
+        navigator.clipboard.writeText(copyText.trim());
+        copyBtnI.classList.replace('fa-regular', "fa-solid");
+        copyBtnI.classList.replace('fa-clipboard', "fa-check");
 
         setTimeout(() => {
-            copyBtnI.classList.replace("fa-solid","fa-regular");
-        copyBtnI.classList.replace("fa-check",'fa-clipboard');
-        copyBtn.blur();
+            copyBtnI.classList.replace("fa-solid", "fa-regular");
+            copyBtnI.classList.replace("fa-check", 'fa-clipboard');
+            copyBtn.blur();
         }, 2000);
     }
 
@@ -76,8 +75,8 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
                                 </div>
                                 <div className='com-o-text desktop'>
                                     <p>{each.outputText.replaceAll("\"", '')}</p>
-                                    <button className='com-o-btn' onClick={()=>{
-                                        copyThat('#com-today-' + (comData.length - index))
+                                    <button className='com-o-btn' onClick={() => {
+                                        copyThat('#com-today-' + (comData.length - index) + ' .com-o-text.desktop')
                                     }}>
                                         <i class="fa-regular fa-clipboard"></i>
                                     </button>
@@ -85,9 +84,9 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
                             </div>
                             <div className='com-o-text mobile'>
                                 <p>{each.outputText.replaceAll("\"", '')}</p>
-                                <button className='com-o-btn' onClick={()=>{
-                                        copyThat('#com-today-' + (comData.length - index))
-                                    }}>
+                                <button className='com-o-btn' onClick={() => {
+                                    copyThat('#com-today-' + (comData.length - index) + ' .com-o-text.mobile')
+                                }}>
                                     <i class="fa-regular fa-clipboard"></i>
                                 </button>
                             </div>

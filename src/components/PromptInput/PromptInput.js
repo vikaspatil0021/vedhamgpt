@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import "./PromptInput.css";
 
 import { IonSpinner } from '@ionic/react';
@@ -28,6 +28,10 @@ const PromptInput = ({ alertBoxTrigger, setUpdatedCompletions }) => {
         }
     }, [fileSelected])
 
+  // Create the object URL only when there's a file selected or updated
+    const objectUrl = useMemo(() => {
+        return fileSelected ? URL.createObjectURL(fileSelected) : null;
+      }, [fileSelected]);
 
 
     // controlling the rows of textarea by scrollheight
@@ -171,7 +175,7 @@ const PromptInput = ({ alertBoxTrigger, setUpdatedCompletions }) => {
             const imageURL = await uploadImage();
             //step 2 generate caption
             const finalStatus = await generateCaption(imageURL);
-            if (finalStatus.status === "OK") {
+            if (finalStatus?.status === "OK") {
                 setUpdatedCompletions(Math.random())
             }
 
@@ -194,7 +198,7 @@ const PromptInput = ({ alertBoxTrigger, setUpdatedCompletions }) => {
             <div className='pi-container'>
                 <div className='pi-image-container'>
                     <div className='pi-selected-image'>
-                        <img src={(!fileSelected) ? '' : URL.createObjectURL(fileSelected)} alt='select_image' />
+                        <img src={objectUrl} alt='select_image' />
                         <div className='pi-img-xmark' onClick={() => {
                             setFileSelected('');
                             resetInput()
