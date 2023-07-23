@@ -5,10 +5,13 @@ import AlertBox from '../AlertBox/AlertBox';
 import Auth from '../Auth/Auth';
 import axios from 'axios';
 import Completions from '../Completions/Completions';
+import CompHistory from '../CompHistory/CompHistory';
 
 const Home = () => {
 
-    const [updatedComplations,setUpdatedCompletions] = useState(0)
+    const [updatedComplations,setUpdatedCompletions] = useState(0);
+    const [comHistory,setHistory] = useState(0)
+
     const [alertMsg, setAlertMsg] = useState('This is a Alert message');
     const token01 = localStorage.getItem("token01")
 
@@ -53,6 +56,8 @@ const Home = () => {
         }
     }, [])
 
+
+
     if (!token01) {
         return (
             <div>
@@ -64,7 +69,10 @@ const Home = () => {
     return (
         <div>
             <div>
-                <Header />
+                <Header setHistory={setHistory} />
+            </div>
+            <div>
+                <CompHistory alertBoxTrigger={alertBoxTrigger} comHistory={comHistory} />
             </div>
 
             <div>

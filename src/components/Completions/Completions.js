@@ -12,8 +12,12 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
 
     // get the completions data
     useEffect(() => {
-        comLoader("show")
-        axios.get(process.env.REACT_APP_SERVER_URL + '/completions', {
+        comLoader("show");
+    
+        const d = new Date()
+        const date = d.toISOString().split('T')[0];
+
+        axios.get(process.env.REACT_APP_SERVER_URL + '/completions/' + date, {
             headers: {
                 "Authorization": "Bearer " + token01
             }

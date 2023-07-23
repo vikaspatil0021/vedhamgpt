@@ -21,15 +21,28 @@
 
 /* sidebar and brand */
 .h-sidebar-icon{
+    all: unset;
     font-size: 20px;
-    padding: 8px 12px;
+    padding: 15px;
     margin-right: 5px;
     border-radius: 50%;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
 }
-.h-sidebar-icon:hover{
+.h-sidebar-icon:hover,.h-sidebar-icon-active{
     background-color: #222;
 }
+
+.h-sidebar-icon i{
+    width: 10px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 
 .h-brand{
     font-weight: bold;

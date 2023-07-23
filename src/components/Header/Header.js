@@ -1,16 +1,41 @@
 import React from 'react';
-import { Link } from "react-router-dom"
 import './Header.css';
 import profile_ from "./../../assets/profile_.jpg"
-const Header = () => {
+
+
+
+const Header = ({setHistory}) => {
+
+
+  // change icons and trigger display property of the history container
+  const togglebarsBtn = () =>{
+    const btn = document.querySelector('.h-sidebar-icon');
+    const btnI = document.querySelector('.h-sidebar-icon i');
+
+    if(btnI.classList.contains('fa-bars')){
+      btnI.classList.replace('fa-bars',"fa-xmark");
+      btn.classList.add('h-sidebar-icon-active');
+
+      setHistory(Math.random())
+    }else{
+      btnI.classList.replace('fa-xmark',"fa-bars");
+      btn.classList.remove('h-sidebar-icon-active');
+
+      setHistory(Math.random())
+
+    }
+  }
+
   return (
     <div className='h-position'>
 
       <div className='h-container'>
         <div>
-          <div className='h-sidebar-icon'>
+          <button className='h-sidebar-icon' onClick={()=>{
+            togglebarsBtn()
+          }}>
             <i class="fa-solid fa-bars"></i>
-          </div>
+          </button>
             <div>
               <span className='h-brand'>Vedham</span>
             </div>

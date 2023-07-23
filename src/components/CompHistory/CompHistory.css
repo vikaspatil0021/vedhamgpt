@@ -1,0 +1,112 @@
+.ch-position{
+    position: fixed;
+    top: 61px; 
+    width: 100%;
+    z-index: 1;
+    display: none;
+}
+
+.ch-container{
+    height: calc(100vh - 61px);
+    width: 100%;
+    background-color: #000;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    color: #f2f2f2;
+    position: relative;
+}
+
+.ch-part1{
+    display: flex ;
+    flex-direction: column;
+    border-right: 1px solid #333;
+    overflow: hidden;
+}
+
+.ch-p1-dates{
+    padding: 10px;
+    overflow: auto;
+}
+
+.ch-p1-dates::-webkit-scrollbar {
+    width: 5px;
+}
+
+.ch-p1-dates::-webkit-scrollbar-thumb{
+    background-color: #82b2ff;
+    border-radius: 20px;
+}
+
+.ch-p1-date-card{
+    padding: 13px 10px;
+    border-radius:8px;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+    letter-spacing: .5px;
+    border: 2px solid #222;
+    margin: 5px 0;
+
+}
+.ch-p1-date-card:hover{
+    background-color: #222;
+}
+
+.ch-p1-dc-active{
+    background-color: #222;
+    border: 2px solid #458af8;
+    color: #458af8;
+
+}
+.ch-p1-title, .ch-p2-title{
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+
+}
+
+.ch-part2{
+    overflow: hidden;
+    position: relative;
+}
+.ch-p2-com{
+    background-color: #222;
+    height: calc(100% - 80.4px);
+    overflow: auto;
+    padding: 20px;
+   
+}
+.ch-p2-com::-webkit-scrollbar {
+    width: 5px;
+}
+
+.ch-p2-com::-webkit-scrollbar-thumb{
+    background-color: #82b2ff;
+    border-radius: 20px;
+}
+
+
+.ch-loader{
+    display: inline-flex;
+    position: absolute;
+    color: #fff;
+    background-color: #000;
+    border-radius: 50%;
+    border: 1px solid #555;
+    padding: 2px;
+    transition: opacity .5s ease-in-out;
+    top: 45px;
+    left: 50%;
+    opacity: 0;
+
+}
+
+@media (max-width:700px) {
+    .ch-container{
+        height: calc(100vh - 57px);
+    }
+}
