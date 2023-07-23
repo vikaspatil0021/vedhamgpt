@@ -64,7 +64,7 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
             <div className='com-box'>
                 {[...comData].map((each, index) => {
                     return (
-                        <div id={'com-today-' + (comData.length - index)} className='com-each-completion'>
+                        <div id={'com-today-' + (comData.length - index)} className='contentToShare com-each-completion'>
                             <img src={each.imageURL} loading="lazy" alt='completion' className='desktop' />
                             <div className='com-text'>
                                 {/* image for mobile  */}
@@ -75,7 +75,7 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
                                 </div>
                                 <div className='com-o-text desktop'>
                                     <p>{each.outputText.replaceAll("\"", '')}</p>
-                                    <button className='com-o-btn' onClick={() => {
+                                    <button  title='copy' className='com-o-btn' onClick={() => {
                                         copyThat('#com-today-' + (comData.length - index) + ' .com-o-text.desktop')
                                     }}>
                                         <i class="fa-regular fa-clipboard"></i>
@@ -84,7 +84,7 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
                             </div>
                             <div className='com-o-text mobile'> 
                                 <p>{each.outputText.replaceAll("\"", '')}</p>
-                                <button className='com-o-btn' onClick={() => {
+                                <button title='copy' className='com-o-btn' onClick={() => {
                                     copyThat('#com-today-' + (comData.length - index) + ' .com-o-text.mobile')
                                 }}>
                                     <i class="fa-regular fa-clipboard"></i>
