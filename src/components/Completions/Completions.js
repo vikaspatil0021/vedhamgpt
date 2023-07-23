@@ -64,7 +64,7 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
             <div className='com-box'>
                 {[...comData].map((each, index) => {
                     return (
-                        <div id={'com-today-' + (comData.length - index)} className='contentToShare com-each-completion'>
+                        <div id={'com-today-' + (comData.length - index)} className='com-each-completion'>
                             <img src={each.imageURL} loading="lazy" alt='completion' className='desktop' />
                             <div className='com-text'>
                                 {/* image for mobile  */}
