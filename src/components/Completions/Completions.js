@@ -82,7 +82,7 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
                                     </button>
                                 </div>
                             </div>
-                            <div className='com-o-text mobile'>
+                            <div className='com-o-text mobile'> 
                                 <p>{each.outputText.replaceAll("\"", '')}</p>
                                 <button className='com-o-btn' onClick={() => {
                                     copyThat('#com-today-' + (comData.length - index) + ' .com-o-text.mobile')

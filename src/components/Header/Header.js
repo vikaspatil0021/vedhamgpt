@@ -16,7 +16,11 @@ const Header = () => {
             </div>
         </div>
 
-        <div className='h-profile'>
+        <div className='h-profile' onClick={()=>{
+          navigator.share({
+            url: "/"
+        })
+        }}>
             <img src={profile_} alt='profile' className='h-profileImg' />
           <div className='h-profileName'>
             Vikas Patil
