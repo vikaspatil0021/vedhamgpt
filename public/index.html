@@ -29,11 +29,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <title id="title">Vedham</title>
   <style>
- .carousel {
+     
+     .carousel {
   position: relative;
-  margin: 0 auto;
-  height: 350px;
-  width: 100%;
+  margin: 40px auto 0 auto;
   padding: 0 20px;
 }
 
@@ -62,33 +61,28 @@
 .slide-btn {
   position: absolute;
   z-index: 2;
-  background: none;
+  background: #f2503a;
   border: none;
   font-size: 20px;
-  padding: 0 0.5rem;
+  padding: 5px 10px;
   border-radius: 0.25rem;
   cursor: pointer;
-  bottom: 50%;
-  transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.5);
+  color:#fff;
+  opacity:0.8;
 }
 
 .slide-btn:hover,
 .slide-btn:focus {
-  color: white;
-  background: rgba(0, 0, 0, 0.2);
+  opacity:1;
 }
 
-.slide-btn:focus {
-  outline: 1px solid black;
-}
 
 .slide-btn.prev {
-  left: 0;
+  left: -10px;
 }
 
 .slide-btn.next {
-  right: 0;
+  right: -10px;
 }
 
 .slide-flex {
@@ -107,45 +101,49 @@
 
 .left-content > img {
   width: auto;
-  height: 100%;
   display: block;
-  object-fit: cover;
   object-position: center;
   border-radius: 10px;
+  aspect-ratio: 3/2;
 }
 
 .right-content {
   width: 50%;
-  padding-left: 30px;
+  padding-left: 15px;
 }
 
-.right-content h1 {
-  margin-top: 0;
+
+.right-content p{
+  margin:0;
+
+  font-size:16px;
+}
+.right-content h1{
+  margin:0;
+  font-size:30px;
 }
 
 .slide-btn-text {
-    display:flex;
-    justify-content:center;
-    cursor:pointer;
-    text-decoration:none;
-  width: 150px;
+  display:flex;
+  justify-content:center;
+  cursor:pointer;
+  text-decoration:none;
+  width: 120px;
   margin: 0 auto;
   background-color: #f2503a;
   color: #fff;
   outline: none;
   border: none;
-  padding: 15px;
+  padding: 10px 15px;
   font-size: 16px;
   font-weight: bold;
   border-radius: 5px;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 /* Responsive Breakpoints */
 @media only screen and (max-width: 700px) {
-    .carousel {
-    height: 600px;
-  }
+ 
     .slide-flex {
         flex-direction: column;
         align-items: center;
@@ -153,12 +151,17 @@
 
     .right-content {
       width: 100%;
+      text-align:center;
+      padding:0;
     }
-
     .left-content {
       width: 100%;
     }
-}  </style>
+    .slide{
+      padding:0 25px;
+    }
+}
+</style>
 </head>
 
 <body>
