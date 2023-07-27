@@ -12,6 +12,7 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
 
     const [activeDate, setActiveDate] = useState('');
 
+    var x = window.matchMedia("(max-width: 700px)");
 
 
     const eachDate = (each) => {
@@ -40,7 +41,7 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
                     return each !== date;
                 })
                 setDates(dateArr);
-                if(dateArr.length===0){
+                if (dateArr.length === 0) {
                     p1.innerHTML = `<span style="color:red;">No dates found</span>`
 
                 }
@@ -60,6 +61,17 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
     // // getting data based on dates
     useEffect(() => {
         if (activeDate !== '') {
+            // mob version .ch-part1 display none on click of activedate
+            const part1 = document.querySelector('.ch-part1');
+            const p2TitleI = document.querySelector('.ch-p2-title i')
+
+            if(x.matches){
+                part1.style.display = "none";
+                p2TitleI.classList.replace("fa-angle-up", "fa-angle-down")
+
+            }
+
+
             chLoader("show")
 
             axios.get(process.env.REACT_APP_SERVER_URL + '/completions/' + activeDate, {
@@ -82,6 +94,8 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
 
             });
         }
+
+
 
     }, [activeDate])
 
@@ -137,6 +151,24 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
         }, 2000);
     }
 
+
+    // display ddates in mobile version
+    const mobDisplayDates = () => {
+        if (x.matches) {
+
+
+            const div = document.querySelector('.ch-part1');
+            const p2TitleI = document.querySelector('.ch-p2-title i')
+            if (div.style.display === "flex") {
+                div.style.display = "none";
+                p2TitleI.classList.replace("fa-angle-up", "fa-angle-down")
+
+            } else {
+                div.style.display = "flex";
+                p2TitleI.classList.replace("fa-angle-down", "fa-angle-up")
+            }
+        }
+    }
     return (
         <div className='ch-position'>
             <div className='ch-container'>
@@ -145,32 +177,46 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
                         History
                     </div>
                     <div className='ch-p1-dates'>
-                        {dates.map((each) => {
-                            return (
-                                <div id={"ch-" + each} className='ch-p1-date-card' onClick={() => {
-                                    selectActiveDate("ch-" + each)
-                                }}>
-                                    <i class="fa-regular fa-clock"></i>
-                                    <span>{eachDate(each)}</span>
-                                </div>
-                            )
-                        })}
+                        {
+                            (dates.length === 0) ?
+                                <div className='ch-loader-dates'>
+                                    <IonSpinner name="lines-sharp-small" />
+                                </div> :
+                                 <>
+                                    {
+                                        dates.map((each) => {
+                                            return (
+                                                <div id={"ch-" + each} className='ch-p1-date-card' onClick={() => {
+                                                    selectActiveDate("ch-" + each)
+                                                }}>
+                                                    <i class="fa-regular fa-clock"></i>
+                                                    <span>{eachDate(each)}</span>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </>
+
+                        }
                     </div>
 
                 </div>
                 <div className='ch-part2'>
-                    <div className='ch-p2-title'>
+                    <div className='ch-p2-title' onClick={() => {
+                        mobDisplayDates()
+                    }}>
                         {activeDate ? eachDate(activeDate) : "Select date"}
+                        <i class="fa-solid fa-angle-down"></i>
                     </div>
                     <div className='ch-p2-com'>
-                        {comData.length===0?<>
+                        {comData.length === 0 ? <>
                             <div className='ch-p2-instruction'>
                                 <span>
-                                Hey there! Wanna dive into the past and check out your previous data? Just tell me the date, and I'll bring you some delightful info! 🗓️😄
+                                    Hey there! Wanna dive into the past and check out your previous data? Just tell me the date, and I'll bring you some delightful info! 🗓️😄
                                 </span>
 
                             </div>
-                        </>:null}
+                        </> : null}
                         {[...comData].map((each, index) => {
                             return (
                                 <div id={'ch-p2-' + (comData.length - index)} className='com-each-completion'>
