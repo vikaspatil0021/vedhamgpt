@@ -16,14 +16,12 @@ const Header = ({setHistory}) => {
       btnI.classList.replace('fa-bars',"fa-xmark");
       btn.classList.add('h-sidebar-icon-active');
 
-      setHistory(Math.random())
     }else{
       btnI.classList.replace('fa-xmark',"fa-bars");
       btn.classList.remove('h-sidebar-icon-active');
-
-      setHistory(Math.random())
-
     }
+    setHistory(Math.random())
+
   }
 
   return (

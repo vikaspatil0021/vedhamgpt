@@ -121,7 +121,7 @@ const Auth = (props) => {
 
             }).catch((err) => {
                 console.log(err)
-                const error = err.response.data.Error;
+                const error = err.response?.data.Error;
                 if (error) {
                     setOtp('')
                     props.alertBoxTrigger(error);

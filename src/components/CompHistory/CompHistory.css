@@ -4,6 +4,7 @@
     width: 100%;
     z-index: 1;
     display: none;
+    transition: display .5s ease-in-out;
 }
 
 .ch-container{
@@ -105,8 +106,45 @@
 
 }
 
+.ch-p2-instruction{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 30px;
+    height: 100%;
+}
+.ch-p2-instruction span{
+    max-width: 500px;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
 @media (max-width:700px) {
+    .ch-position{
+        top: 57px;
+    }
     .ch-container{
         height: calc(100vh - 57px);
+        grid-template-columns: 1fr;
     }
+
+    .ch-part1{
+        display: none;
+        position: absolute;
+        top: 0px;
+        right: 0;
+        z-index: 1;
+    }
+    .ch-p2-com{
+        padding: 15px 8px;
+    }
+    .ch-p2-com .com-each-completion{
+        border-radius: 20px;
+    }
+
+    .ch-p2-title{
+        padding: 15px 0;
+    }
+    
 }

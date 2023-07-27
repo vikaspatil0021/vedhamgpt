@@ -41,7 +41,7 @@ const Home = () => {
             }).then(res => {
                 console.log(res.data)
             }).catch(err => {
-                const error = err.response.data.Error;
+                const error = err.response?.data.Error;
                 if (error) {
 
                     console.log(error);

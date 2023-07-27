@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './CompHistory.css'
 import axios from 'axios';
@@ -22,8 +22,13 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
     useEffect(() => {
         showHistory();
 
+
+        const div = document.querySelector('.ch-position');
+
+        const p1 = document.querySelector(".ch-p1-dates");
+
         // getting all dates
-        if (dates !== '') {
+        if (dates.length === 0 && div.style.display === "block") {
             axios.get(process.env.REACT_APP_SERVER_URL + '/allDates', {
                 headers: {
                     "Authorization": "Bearer " + token01
@@ -32,13 +37,20 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
                 const d = new Date()
                 const date = d.toISOString().split('T')[0];
                 const dateArr = res.data.filter((each) => {
-                    return each != date;
+                    return each !== date;
                 })
                 setDates(dateArr);
+                if(dateArr.length===0){
+                    p1.innerHTML = `<span style="color:red;">No dates found</span>`
+
+                }
             }).catch(err => {
                 const error = err.response?.data.Error;
                 if (error) {
-                    alertBoxTrigger(error.message);
+                    alertBoxTrigger("No dates found");
+
+                    p1.innerHTML = `<span style="color:red;">No dates found</span>`
+
                 }
             })
         }
@@ -47,26 +59,30 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
 
     // // getting data based on dates
     useEffect(() => {
-        chLoader("show")
+        if (activeDate !== '') {
+            chLoader("show")
 
-        axios.get(process.env.REACT_APP_SERVER_URL + '/completions/' + activeDate, {
-            headers: {
-                "Authorization": "Bearer " + token01
-            }
-        }).then(res => {
-            const com = [...res.data[0].data].reverse();
-            setComData(com)
-            chLoader("hide")
+            axios.get(process.env.REACT_APP_SERVER_URL + '/completions/' + activeDate, {
+                headers: {
+                    "Authorization": "Bearer " + token01
+                }
+            }).then(res => {
+                const com = [...res.data[0].data].reverse();
+                setComData(com)
+                chLoader("hide")
 
 
-        }).catch(err => {
-            const error = err.response?.data.Error;
-            if (error) {
-                alertBoxTrigger(error.message);
-            }
-            chLoader("hide")
+            }).catch(err => {
+                const error = err.response?.data.Error;
+                if (error) {
+                    alertBoxTrigger(error);
+                }
 
-        })
+                chLoader("hide")
+
+            });
+        }
+
     }, [activeDate])
 
     // trigger coh-position to show or hide
@@ -120,6 +136,7 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
             copyBtn.blur();
         }, 2000);
     }
+
     return (
         <div className='ch-position'>
             <div className='ch-container'>
@@ -128,7 +145,6 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
                         History
                     </div>
                     <div className='ch-p1-dates'>
-
                         {dates.map((each) => {
                             return (
                                 <div id={"ch-" + each} className='ch-p1-date-card' onClick={() => {
@@ -144,9 +160,17 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
                 </div>
                 <div className='ch-part2'>
                     <div className='ch-p2-title'>
-                        {eachDate(activeDate)}
+                        {activeDate ? eachDate(activeDate) : "Select date"}
                     </div>
                     <div className='ch-p2-com'>
+                        {comData.length===0?<>
+                            <div className='ch-p2-instruction'>
+                                <span>
+                                Hey there! Wanna dive into the past and check out your previous data? Just tell me the date, and I'll bring you some delightful info! 🗓️😄
+                                </span>
+
+                            </div>
+                        </>:null}
                         {[...comData].map((each, index) => {
                             return (
                                 <div id={'ch-p2-' + (comData.length - index)} className='com-each-completion'>
@@ -160,11 +184,11 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
                                         </div>
                                         <div className='com-o-text desktop'>
                                             <p>{each?.outputText?.replaceAll("\"", '')}</p>
-                                            <button  title='copy' className='com-o-btn' onClick={() => {
-                                        copyThat('#ch-p2-' + (comData.length - index) + ' .com-o-text.desktop')
-                                    }}>
-                                        <i class="fa-regular fa-clipboard"></i>
-                                    </button>
+                                            <button title='copy' className='com-o-btn' onClick={() => {
+                                                copyThat('#ch-p2-' + (comData.length - index) + ' .com-o-text.desktop')
+                                            }}>
+                                                <i class="fa-regular fa-clipboard"></i>
+                                            </button>
                                         </div>
                                     </div>
                                     <div className='com-o-text mobile'>
