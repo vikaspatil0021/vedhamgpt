@@ -54,7 +54,7 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
 
                 }
             })
-        }else{
+        } else {
             const div = document.querySelector('.ch-part1');
             if (div.style.display === "flex") {
                 mobDisplayDates()
@@ -70,7 +70,7 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
             const part1 = document.querySelector('.ch-part1');
             const p2TitleI = document.querySelector('.ch-p2-title i')
 
-            if(x.matches){
+            if (x.matches) {
                 part1.style.display = "none";
                 p2TitleI.classList.replace("fa-angle-up", "fa-angle-down")
 
@@ -182,12 +182,11 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
                         History
                     </div>
                     <div className='ch-p1-dates'>
+
+
                         {
-                            (dates.length === 0) ?
-                                <div className='ch-loader-dates'>
-                                    <IonSpinner name="lines-sharp-small" />
-                                </div> :
-                                 <>
+                            (dates.length !== 0) ?
+                                <>
                                     {
                                         dates.map((each) => {
                                             return (
@@ -201,6 +200,9 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
                                         })
                                     }
                                 </>
+                                : <div className='ch-loader-dates'>
+                                    <IonSpinner name="lines-sharp-small" />
+                                </div>
 
                         }
                     </div>

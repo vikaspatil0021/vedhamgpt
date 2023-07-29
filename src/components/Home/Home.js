@@ -6,6 +6,7 @@ import Auth from '../Auth/Auth';
 import axios from 'axios';
 import Completions from '../Completions/Completions';
 import CompHistory from '../CompHistory/CompHistory';
+import Account from '../Account/Account';
 
 const Home = () => {
 
@@ -24,10 +25,10 @@ const Home = () => {
 
         setTimeout(() => {
             abContainer.style.opacity = 0
-        }, 6500);
+        }, 4000);
         setTimeout(() => {
             abContainer.style.display = "none";
-        }, 6830);
+        }, 4330);
     }
 
     // check if the token is expired or invalid 
@@ -56,7 +57,11 @@ const Home = () => {
         }
     }, [])
 
-
+    // disoplay block Account container
+    const triggerAccount = ()=>{
+        const ac = document.querySelector('.ac-position');
+        ac.style.display = "flex"
+    }
 
     if (!token01) {
         return (
@@ -69,7 +74,10 @@ const Home = () => {
     return (
         <div>
             <div>
-                <Header setHistory={setHistory} />
+                <Header setHistory={setHistory} triggerAccount={triggerAccount} />
+            </div>
+            <div>
+                <Account />
             </div>
             <div>
                 <CompHistory alertBoxTrigger={alertBoxTrigger} comHistory={comHistory} />

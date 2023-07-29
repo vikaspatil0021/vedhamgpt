@@ -225,7 +225,7 @@ const PromptInput = ({ alertBoxTrigger, setUpdatedCompletions }) => {
                             <textarea rows='1' type='text' className='pi-input' placeholder='Enter details here ...' value={prompt} onChange={(e) => {
                                 handleTextareaHeight();
                                 setPrompt(e.target.value);
-                            }} required />
+                            }} autoFocus required />
                             <div className='pi-microphone-icon' onClick={(e) => startListening(e)}>
                                 <i class="fa-solid fa-microphone"></i>
                             </div>

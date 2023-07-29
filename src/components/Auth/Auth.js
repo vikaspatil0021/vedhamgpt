@@ -108,6 +108,8 @@ const Auth = (props) => {
                 if(res.data.status){
                     loadAni_v({ loading: true, text:"👍 OTP Verified  >  Redirecting..." });
                     localStorage.setItem("token01",res.data.token);
+                    localStorage.setItem("userEmail",res.data.user.email);
+                    localStorage.setItem("userName",res.data.user.fName);
 
                     otpInputArr.forEach((each)=>{
                         each.style.border = "1px solid #05ff11";

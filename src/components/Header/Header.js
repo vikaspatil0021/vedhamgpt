@@ -4,50 +4,52 @@ import profile_ from "./../../assets/profile_.jpg"
 
 
 
-const Header = ({setHistory}) => {
-
+const Header = ({ setHistory, triggerAccount }) => {
+  const fName = localStorage.getItem('userName');
 
   // change icons and trigger display property of the history container
-  const togglebarsBtn = () =>{
+  const togglebarsBtn = () => {
     const btn = document.querySelector('.h-sidebar-icon');
     const btnI = document.querySelector('.h-sidebar-icon i');
 
-    if(btnI.classList.contains('fa-bars')){
-      btnI.classList.replace('fa-bars',"fa-xmark");
+    if (btnI.classList.contains('fa-bars')) {
+      btnI.classList.replace('fa-bars', "fa-xmark");
       btn.classList.add('h-sidebar-icon-active');
 
-    }else{
-      btnI.classList.replace('fa-xmark',"fa-bars");
+    } else {
+      btnI.classList.replace('fa-xmark', "fa-bars");
       btn.classList.remove('h-sidebar-icon-active');
     }
     setHistory(Math.random())
 
   }
 
+
   return (
     <div className='h-position'>
-
       <div className='h-container'>
         <div>
-          <button className='h-sidebar-icon' onClick={()=>{
+          <button className='h-sidebar-icon' onClick={() => {
             togglebarsBtn()
           }}>
             <i class="fa-solid fa-bars"></i>
           </button>
-            <div>
-              <span className='h-brand'>Vedham</span>
-            </div>
+          <div>
+            <span className='h-brand'>Vedham</span>
+          </div>
         </div>
 
-        <div className='h-profile'>
-            <img src={profile_} alt='profile' className='h-profileImg' />
+        <div className='h-profile' onClick={() => {
+          triggerAccount()
+        }}>
+          <img src={profile_} alt='profile' className='h-profileImg' />
           <div className='h-profileName'>
-            Vikas Patil
+            {fName}
           </div>
         </div>
 
       </div>
-     
+
     </div>
   )
 }
