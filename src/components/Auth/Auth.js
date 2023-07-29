@@ -181,8 +181,9 @@ const Auth = (props) => {
                                 value={otp}
                                 onChange={setOtp}
                                 numInputs={4}
+                                inputType={'number'}
                                 renderSeparator={<span></span>}
-                                renderInput={(props) => <input type='number' {...props} className='a-otp-input' />}
+                                renderInput={(props) => <input type='number'  {...props} className='a-otp-input' />}
                             />
                         </div>
                         <div class="a-otp-spinner">

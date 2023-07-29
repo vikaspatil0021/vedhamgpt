@@ -121,7 +121,11 @@
     margin: 8px;
     border-radius: 10px;
     font-size: 20px;
-
+}
+.a-otp-input::-webkit-outer-spin-button,
+.a-otp-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 #a-input-email:disabled{
