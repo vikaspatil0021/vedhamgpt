@@ -14,6 +14,14 @@ const Account = () => {
 
     }
 
+    // logout 
+    const logoutTrigger = ()=>{
+        localStorage.clear();
+        setTimeout(() => {
+            window.location.reload()
+        }, 500);
+    }
+
     return (
         <div className='ac-position'>
             <div className='ac-black-bg'></div>
@@ -47,7 +55,7 @@ const Account = () => {
                         <div>
                         Time to bid adieu! Keep smiling and see you soon! 😊
                         </div>
-                        <button>
+                        <button onClick={logoutTrigger}>
                             Logout
                         </button>
                     </div>
