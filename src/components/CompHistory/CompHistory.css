@@ -180,6 +180,10 @@
         display: inline;
         padding: 0 10px;
     }
- 
+    
+    .ch-p1-date-card{
+        margin: 8px 0;
+        padding: 15px 10px;
+    }
     
 }
