@@ -54,6 +54,11 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
 
                 }
             })
+        }else{
+            const div = document.querySelector('.ch-part1');
+            if (div.style.display === "flex") {
+                mobDisplayDates()
+            }
         }
     }, [comHistory]);
 
@@ -152,7 +157,7 @@ const CompHistory = ({ comHistory, alertBoxTrigger }) => {
     }
 
 
-    // display ddates in mobile version
+    // display dates in mobile version
     const mobDisplayDates = () => {
         if (x.matches) {
 
