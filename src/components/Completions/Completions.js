@@ -7,6 +7,7 @@ import { IonSpinner } from '@ionic/react';
 
 const Completions = ({ alertBoxTrigger, updatedComplations }) => {
     const token01 = localStorage.getItem("token01");
+    const fName = localStorage.getItem('userName');
 
     const [comData, setComData] = useState([])
 
@@ -67,10 +68,29 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
         <div className='com-container'>
             <div className='com-box'>
                 {comData.length === 0 ? <>
-                    <div className='ch-p2-instruction'>
-                        <span>
-                            Hey there! Wanna dive into the past and check out your previous data? Just tell me the date, and I'll bring you some delightful info! 🗓️😄
-                        </span>
+                    <div className='com-box-instruction'>
+                    <div>
+    <h3>
+        Welcome {fName}! 🎉
+    </h3>
+    <div>
+        To ensure you have the best experience, kindly follow these simple steps:
+    </div>
+    <div>
+        1. Upload an image by clicking on the camera icon. 📸
+    </div>
+    <div>
+        2. Provide details related to the image: <br />
+        For example: [ "Attending a wedding", "on the mountain", "at a party" ] 🏞️🎊
+    </div>
+    <div>
+        3. Send the prompt to start the magic! ✨
+    </div>
+    <h4>
+        Happy generating! 😃
+    </h4>
+</div>
+
                     </div>
                 </> : null}
                 {[...comData].map((each, index) => {

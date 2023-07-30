@@ -129,15 +129,15 @@
 .ch-p2-instruction{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 23px;
     height: 100%;
 }
 .ch-p2-instruction span{
     max-width: 500px;
     text-align: center;
-    padding-bottom: 50px;
+    padding:50px 0;
 }
 
 @media (max-width:700px) {
