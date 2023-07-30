@@ -86,9 +86,6 @@
     height: calc(100% - 80.4px);
     overflow: auto;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
    
 }
 .ch-p2-com::-webkit-scrollbar {
@@ -112,6 +109,7 @@
     transition: opacity .5s ease-in-out;
     top: 45px;
     opacity: 0;
+    left: calc(50% - 16.5px);
 
 }
 .ch-loader-dates{
