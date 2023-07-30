@@ -71,7 +71,7 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
                     <div className='com-box-instruction'>
                         <div>
                             <h3>
-                                Welcome {fName}! 🎉
+                                Welcome <span>{fName}</span> ! 🎉
                             </h3>
                             <div>
                                 To ensure you have the best experience, kindly follow these simple steps:
