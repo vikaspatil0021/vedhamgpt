@@ -69,27 +69,27 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
             <div className='com-box'>
                 {comData.length === 0 ? <>
                     <div className='com-box-instruction'>
-                    <div>
-    <h3>
-        Welcome {fName}! 🎉
-    </h3>
-    <div>
-        To ensure you have the best experience, kindly follow these simple steps:
-    </div>
-    <div>
-        1. Upload an image by clicking on the camera icon. 📸
-    </div>
-    <div>
-        2. Provide details related to the image: <br />
-        For example: [ "Attending a wedding", "on the mountain", "at a party" ] 🏞️🎊
-    </div>
-    <div>
-        3. Send the prompt to start the magic! ✨
-    </div>
-    <h4>
-        Happy generating! 😃
-    </h4>
-</div>
+                        <div>
+                            <h3>
+                                Welcome {fName}! 🎉
+                            </h3>
+                            <div>
+                                To ensure you have the best experience, kindly follow these simple steps:
+                            </div>
+                            <div>
+                                1 - Upload an image by clicking on the camera icon. 📸
+                            </div>
+                            <div>
+                                2 - Provide details related to the image: <br />
+                                For example: [ "Attending a wedding", "on the mountain", "at a party" ] 🏞️🎊
+                            </div>
+                            <div>
+                                3 - Send the prompt to start the magic! ✨
+                            </div>
+                            <h4>
+                                Happy generating! 😃
+                            </h4>
+                        </div>
 
                     </div>
                 </> : null}
