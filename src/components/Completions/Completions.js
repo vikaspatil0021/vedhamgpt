@@ -13,7 +13,7 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
     // get the completions data
     useEffect(() => {
         comLoader("show");
-    
+
         const d = new Date()
         const date = d.toISOString().split('T')[0];
 
@@ -66,6 +66,13 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
     return (
         <div className='com-container'>
             <div className='com-box'>
+                {comData.length === 0 ? <>
+                    <div className='ch-p2-instruction'>
+                        <span>
+                            Hey there! Wanna dive into the past and check out your previous data? Just tell me the date, and I'll bring you some delightful info! 🗓️😄
+                        </span>
+                    </div>
+                </> : null}
                 {[...comData].map((each, index) => {
                     return (
                         <div id={'com-today-' + (comData.length - index)} className='com-each-completion'>
@@ -79,14 +86,14 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
                                 </div>
                                 <div className='com-o-text desktop'>
                                     <p>{each.outputText.replaceAll("\"", '')}</p>
-                                    <button  title='copy' className='com-o-btn' onClick={() => {
+                                    <button title='copy' className='com-o-btn' onClick={() => {
                                         copyThat('#com-today-' + (comData.length - index) + ' .com-o-text.desktop')
                                     }}>
                                         <i class="fa-regular fa-clipboard"></i>
                                     </button>
                                 </div>
                             </div>
-                            <div className='com-o-text mobile'> 
+                            <div className='com-o-text mobile'>
                                 <p>{each.outputText.replaceAll("\"", '')}</p>
                                 <button title='copy' className='com-o-btn' onClick={() => {
                                     copyThat('#com-today-' + (comData.length - index) + ' .com-o-text.mobile')
