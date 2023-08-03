@@ -23,11 +23,7 @@
     height: 100%;
     color: #f2f2f2ee;
 }
-.com-box-instruction h2 span{
-    background: linear-gradient(25deg, #00d2ff, #438bef);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-}
+
 .com-box-instruction > div{
     max-width: 700px;
     width: 100%;
@@ -180,7 +176,13 @@
 
 }
 
-h2 {
+/* welcome instructions */
+.com-box-instruction h2 span{
+    background: linear-gradient(25deg, #00d2ff, #46f25a);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+.com-box-instruction h2 {
     color: #fff;
     text-align: center;
     margin-bottom: 20px;
@@ -201,22 +203,9 @@ h2 {
     margin-bottom: 15px;
 }
 
-.step span {
-    font-weight: bold;
-    margin-right: 5px;
-}
-
-.step img {
-    vertical-align: middle;
-}
-
 .prompt {
     text-align: center;
     font-size: 18px;
     color: #46f25a;
 }
 
-.emoji {
-    font-size: 24px;
-    margin-left: 5px;
-}

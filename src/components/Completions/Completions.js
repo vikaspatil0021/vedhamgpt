@@ -70,6 +70,8 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
                 {comData.length === 0 ? <>
                     <div className='com-box-instruction'>
                         <div>
+                        {/*  welcome instructions */ }
+
                             <h2>Welcome <span>{fName}</span> ! 🎉</h2>
                             <div class="instructions">
                                 <div class="step">
