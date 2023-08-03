@@ -23,7 +23,7 @@
     height: 100%;
     color: #f2f2f2ee;
 }
-.com-box-instruction h3 span{
+.welcome-container h1 span{
     background: linear-gradient(25deg, #00d2ff, #3a7bd5);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
@@ -177,4 +177,44 @@
         display: none;
     }
 
+}
+
+.welcome-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    border: 2px solid #f0f0f0;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #ff7f50;
+    margin-bottom: 15px;
+}
+
+.steps {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.step-item {
+    margin-bottom: 15px;
+}
+
+.step-icon {
+    font-size: 24px;
+    color: #ff7f50;
+    margin-right: 10px;
+}
+
+.emoji {
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.highlight {
+    color: #4caf50;
+    font-weight: bold;
 }
