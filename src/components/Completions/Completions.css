@@ -177,11 +177,15 @@
         display: none;
     }
 
+    h1{
+        font-size: 135%;
+    }
+
 }
 
 .welcome-container {
     max-width: 600px;
-    margin: 50px auto;
+    margin: auto;
     padding: 30px;
     border: 2px solid #f0f0f0;
     border-radius: 10px;
