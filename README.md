@@ -12,7 +12,7 @@ Vedham is built using the MERN (MongoDB, Express.js, React, Node.js) stack techn
 
 ## Live Demo
 
-Check out the live demo of Vedham: [Vedham Live Demo](https://your-vedham-demo-url)
+Check out the live demo of Vedham: [Vedham Live Demo](https://vedhamgpt.vercel.app/)
 
 ## Installation and Setup
 
@@ -21,13 +21,13 @@ To run Vedham locally, follow these steps:
 1. Clone the frontend repository:
 
 ```bash
-git clone https://github.com/your-username/vedham-frontend.git
+git clone https://github.com/vikaspatil0021/vedhamgpt.git
 ```
 
 2. Install dependencies:
 
 ```bash
-cd vedham-frontend
+cd vedhamgpt
 npm install
 ```
 
