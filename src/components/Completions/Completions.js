@@ -69,25 +69,25 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
             <div className='com-box'>
                 {comData.length === 0 ? <>
                     <div className='com-box-instruction'>
-                        <div class="welcome-container">
-                            <h1>Welcome, <span>{fName}</span>! 🎉</h1>
-                            <div class="steps">
-                                <div class="step-item">
-                                    <span class="step-icon">📸</span> Upload an image by clicking on the camera icon.
+                        <div>
+                            <h2>Welcome <span>{fName}</span> ! 🎉</h2>
+                            <div class="instructions">
+                                <div class="step">
+                                    1. Upload an image by clicking on the camera icon. 📸
                                 </div>
-                                <div class="step-item">
-                                    <span class="step-icon">🏞️</span> Provide details related to the image:
+                                <div class="step">
+                                    2. Provide details related to the image, for example:
                                     <ul>
-                                        <li><span class="emoji">📝</span> Describe the location, e.g., "On a beautiful mountain."</li>
-                                        <li><span class="emoji">👥</span> Mention who is in the picture, e.g., "With friends at a party."</li>
-                                        <li><span class="emoji">🎉</span> Add any exciting event, e.g., "Celebrating a wedding."</li>
+                                        <li>Attending a wedding 🏰</li>
+                                        <li>Exploring a beautiful mountain 🏞️</li>
+                                        <li>Celebrating at a party 🎊</li>
                                     </ul>
                                 </div>
-                                <div class="step-item">
-                                    <span class="step-icon">✨</span> Send the prompt to start the magic and generate your story!
+                                <div class="step">
+                                    3. Send the prompt to start the magic! ✨
                                 </div>
                             </div>
-                            <p class="highlight">Happy generating! 😃</p>
+                            <div class="prompt">Happy generating! 😃</div>
                         </div>
 
                     </div>

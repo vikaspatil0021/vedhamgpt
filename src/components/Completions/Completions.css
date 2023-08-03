@@ -23,8 +23,8 @@
     height: 100%;
     color: #f2f2f2ee;
 }
-.welcome-container >h1 >span{
-    background: linear-gradient(25deg, #00d2ff, #3a7bd5);
+.com-box-instruction h2 span{
+    background: linear-gradient(25deg, #00d2ff, #438bef);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
@@ -177,48 +177,44 @@
         display: none;
     }
 
-    h1{
-        font-size: 135%;
-    }
 
 }
 
-.welcome-container {
-    max-width: 600px;
-    margin: auto;
-    padding: 30px;
-    border: 2px solid #f0f0f0;
+h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.instructions {
+    background-color: #fff;
     border-radius: 10px;
-    background-color: #f2f2f2;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
     color: #000;
 }
 
-h1 {
+.step {
     margin-bottom: 15px;
 }
 
-.steps {
-    text-align: left;
-    margin-bottom: 30px;
+.step span {
+    font-weight: bold;
+    margin-right: 5px;
 }
 
-.step-item {
-    margin-bottom: 15px;
-}
-
-.step-icon {
-    font-size: 24px;
-    color: #ff7f50;
-    margin-right: 10px;
-}
-
-.emoji {
-    font-size: 20px;
+.step img {
     vertical-align: middle;
 }
 
-.highlight {
-    color: #5695fc;
-    font-weight: bold;
+.prompt {
+    text-align: center;
+    font-size: 18px;
+    color: #46f25a;
+}
+
+.emoji {
+    font-size: 24px;
+    margin-left: 5px;
 }
