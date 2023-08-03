@@ -72,23 +72,20 @@ const Completions = ({ alertBoxTrigger, updatedComplations }) => {
                         <div>
                             <h2>Welcome <span>{fName}</span> ! 🎉</h2>
                             <div class="instructions">
-                                <ol>
-
-                                <li class="step">
-                                    Upload an image by clicking on the camera icon. 📸
-                                </li>
-                                <li class="step">
-                                    Provide details related to the image, for example:
+                                <div class="step">
+                                    1. Upload an image by clicking on the camera icon. 📸
+                                </div>
+                                <div class="step">
+                                    2. Provide details related to the image, for example:
                                     <ul>
                                         <li>Attending a wedding 🏰</li>
                                         <li>Exploring a beautiful mountain 🏞️</li>
                                         <li>Celebrating at a party 🎊</li>
                                     </ul>
-                                </li>
-                                <li class="step">
-                                    Send the prompt to start the magic! ✨
-                                </li>
-                                </ol>
+                                </div>
+                                <div class="step">
+                                    3. Send the prompt to start the magic! ✨
+                                </div>
                             </div>
                             <div class="prompt">Happy generating! 😃</div>
                         </div>
